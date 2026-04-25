@@ -117,41 +117,95 @@ nav {
   padding: 140px 56px 80px;
 }
 
-/* Phone */
-.phone {
-  width: 220px; height: 440px;
-  background: var(--stone); border: 1px solid var(--light);
-  position: relative;
-  box-shadow: 16px 24px 64px rgba(0,0,0,0.12), -4px -4px 0 var(--black);
+/* Phone iframe frame */
+.phone-frame {
+  width: 240px;
+  background: #111;
+  border-radius: 36px;
+  padding: 14px 10px;
+  box-shadow: 16px 24px 64px rgba(0,0,0,0.2), -4px -4px 0 var(--gold);
+  display: flex; flex-direction: column;
 }
-.phone-bar { height: 3px; background: var(--black); width: 60px; margin: 12px auto 0; }
-.phone-inner { padding: 12px 14px; }
-.phone-header-strip {
-  background: var(--black); color: var(--stone);
-  margin: -12px -14px 12px; padding: 12px 14px;
+.phone-top-bar { display: flex; justify-content: center; padding-bottom: 10px; }
+.phone-notch { width: 72px; height: 20px; background: #000; border-radius: 0 0 14px 14px; }
+.phone-screen-wrap {
+  width: 100%; height: 460px;
+  border-radius: 12px; overflow: hidden;
+  background: #1a1a1a;
+  position: relative; overflow-y: auto;
 }
-.phone-hname { font-family: 'Cormorant Garamond', serif; font-size: 15px; letter-spacing: 2px; text-transform: uppercase; }
-.phone-hsub { font-size: 9px; color: rgba(255,255,255,0.5); letter-spacing: 1px; margin-top: 2px; }
-.phone-langs { display: flex; gap: 4px; margin-bottom: 12px; }
-.plang { font-size: 8px; letter-spacing: 1px; padding: 3px 6px; border: 1px solid var(--light); color: var(--gray); text-transform: uppercase; }
-.plang.on { background: var(--black); color: var(--stone); border-color: var(--black); }
-.phone-cat {
-  font-size: 8px; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 8px;
-  display: flex; align-items: center; gap: 6px;
+.phone-bottom-bar { display: flex; justify-content: center; padding-top: 12px; }
+.phone-home-btn { width: 80px; height: 4px; background: rgba(255,255,255,0.15); border-radius: 2px; }
+
+/* Menu screen styles */
+.ms-lang-badge {
+  position: absolute; top: 10px; left: 10px; z-index: 10;
+  background: rgba(0,0,0,0.7); color: white;
+  font-size: 9px; padding: 4px 8px; border-radius: 4px;
 }
-.phone-cat::after { content: ''; flex: 1; height: 1px; background: var(--light); }
-.phone-row {
+.ms-hero {
+  height: 140px; background: #2a2a2a;
+  position: relative; overflow: hidden;
+  background-image: repeating-linear-gradient(
+    45deg, #222 0px, #222 2px, #2a2a2a 2px, #2a2a2a 12px
+  );
+}
+.ms-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+}
+.ms-hero-content {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+}
+.ms-location { font-size: 8px; letter-spacing: 3px; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
+.ms-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-style: italic; color: white; line-height: 1;
+  margin-bottom: 6px;
+}
+.ms-subtitle { font-size: 7px; letter-spacing: 2px; color: rgba(255,255,255,0.5); }
+
+.ms-cats {
+  display: flex; background: #111;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  overflow-x: auto;
+}
+.ms-cat {
+  padding: 10px 12px; font-size: 8px; letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.4); white-space: nowrap; flex-shrink: 0;
+  border-bottom: 2px solid transparent;
+}
+.ms-cat.active { color: white; border-bottom-color: var(--gold); }
+
+.ms-body { background: #fff; padding: 12px 14px; }
+
+.ms-section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-style: italic; color: #111;
+  margin-bottom: 8px;
   display: flex; justify-content: space-between; align-items: baseline;
-  padding: 6px 0; border-bottom: 1px solid var(--light); font-size: 10px;
 }
-.pname { color: var(--black); }
-.pprice { color: var(--gray); font-size: 9px; }
-.phone-cta {
-  position: absolute; bottom: 16px; left: 14px; right: 14px;
-  background: var(--black); color: var(--stone);
-  text-align: center; padding: 10px;
-  font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+.ms-section-title span { font-size: 7px; font-style: normal; letter-spacing: 1.5px; color: #aaa; font-family: 'Karla', sans-serif; }
+
+.ms-item {
+  display: flex; justify-content: space-between; gap: 8px;
+  padding: 10px 0; border-bottom: 1px solid #eee;
+}
+.ms-item-info { flex: 1; }
+.ms-item-tag {
+  font-size: 7px; letter-spacing: 1.5px; color: var(--gold);
+  margin-bottom: 2px; font-weight: 500;
+}
+.ms-item-name { font-size: 11px; font-weight: 500; color: #111; margin-bottom: 2px; }
+.ms-item-desc { font-size: 9px; color: #888; line-height: 1.4; }
+.ms-item-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
+.ms-item-price { font-size: 11px; font-weight: 500; color: #111; white-space: nowrap; }
+.ms-item-btn {
+  width: 20px; height: 20px; border: 1px solid #ddd;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; color: #555; border-radius: 4px;
 }
 .phone-tag {
   position: absolute; top: -18px; right: -32px;
@@ -405,31 +459,93 @@ footer a:hover { color: var(--gold); }
   </div>
   <div class="hero-right">
     <div style="position:relative;">
-      <div class="phone-tag">6 Idiomas</div>
-      <div class="phone">
-        <div class="phone-bar"></div>
-        <div class="phone-inner">
-          <div class="phone-header-strip">
-            <div class="phone-hname">Bar Piedras</div>
-            <div class="phone-hsub">Palermo · Buenos Aires</div>
+      <div class="phone-tag">Demo en vivo</div>
+      <div class="phone-frame">
+        <div class="phone-top-bar">
+          <div class="phone-notch"></div>
+        </div>
+        <div class="phone-screen-wrap">
+
+          <!-- LANG BADGE -->
+          <div class="ms-lang-badge">🇦🇷 Español</div>
+
+          <!-- HERO IMAGE AREA -->
+          <div class="ms-hero">
+            <div class="ms-hero-overlay"></div>
+            <div class="ms-hero-content">
+              <div class="ms-location">BUENOS AIRES</div>
+              <div class="ms-title">Why Not</div>
+              <div class="ms-subtitle">CAFÉ · BAR · RESTAURANTE</div>
+            </div>
           </div>
-          <div class="phone-langs">
-            <div class="plang on">ES</div>
-            <div class="plang">EN</div>
-            <div class="plang">PT</div>
-            <div class="plang">FR</div>
-            <div class="plang">DE</div>
+
+          <!-- CATEGORIES -->
+          <div class="ms-cats">
+            <div class="ms-cat active">TODO</div>
+            <div class="ms-cat">CAFETERÍA</div>
+            <div class="ms-cat">DESAYUNOS</div>
+            <div class="ms-cat">ENSALADAS</div>
           </div>
-          <div class="phone-cat">Entradas</div>
-          <div class="phone-row"><span class="pname">Ensalada mixta</span><span class="pprice">$2.800</span></div>
-          <div class="phone-row"><span class="pname">Rabas fritas</span><span class="pprice">$4.500</span></div>
-          <div class="phone-cat" style="margin-top:10px;">Platos</div>
-          <div class="phone-row"><span class="pname">Bife de chorizo</span><span class="pprice">$9.200</span></div>
-          <div class="phone-row"><span class="pname">Milanesa napolitana</span><span class="pprice">$7.800</span></div>
-          <div class="phone-cta">Ver mi pedido →</div>
+
+          <!-- MENU ITEMS -->
+          <div class="ms-body">
+            <div class="ms-section-title">Cafetería <span>CAFETERÍA</span></div>
+
+            <div class="ms-item">
+              <div class="ms-item-info">
+                <div class="ms-item-name">Café americano</div>
+                <div class="ms-item-desc">Café suave, largo</div>
+              </div>
+              <div class="ms-item-right">
+                <div class="ms-item-price">$4.000</div>
+                <div class="ms-item-btn">+</div>
+              </div>
+            </div>
+
+            <div class="ms-item">
+              <div class="ms-item-info">
+                <div class="ms-item-name">Cappuccino Frozen</div>
+                <div class="ms-item-desc">Espresso, helado de crema, chocolate y canela</div>
+              </div>
+              <div class="ms-item-right">
+                <div class="ms-item-price">$7.500</div>
+                <div class="ms-item-btn">+</div>
+              </div>
+            </div>
+
+            <div class="ms-section-title" style="margin-top:16px;">Desayunos <span>DESAYUNOS</span></div>
+
+            <div class="ms-item">
+              <div class="ms-item-info">
+                <div class="ms-item-tag">ESPECIAL</div>
+                <div class="ms-item-name">Combo 1</div>
+                <div class="ms-item-desc">Café americano + 2 medialunas ó 2 Donayakis ó budín del día</div>
+              </div>
+              <div class="ms-item-right">
+                <div class="ms-item-price">$8.000</div>
+                <div class="ms-item-btn">+</div>
+              </div>
+            </div>
+
+            <div class="ms-item">
+              <div class="ms-item-info">
+                <div class="ms-item-tag">ESPECIAL</div>
+                <div class="ms-item-name">Combo 6</div>
+                <div class="ms-item-desc">Café con leche + Tostado de jamón y queso en pan árabe integral</div>
+              </div>
+              <div class="ms-item-right">
+                <div class="ms-item-price">$16.000</div>
+                <div class="ms-item-btn">+</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="phone-bottom-bar">
+          <div class="phone-home-btn"></div>
         </div>
       </div>
-      <div class="phone-tag2">Pedido al mozo</div>
+      <div class="phone-tag2">Tocalo ↑</div>
     </div>
   </div>
 </section>
