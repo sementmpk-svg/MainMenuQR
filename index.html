@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menú Digital QR — Tu restaurante en 6 idiomas</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Karla:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --black: #0E0E0E;
+  --stone: #FAFAF8;
+  --warm: #F2F0EB;
+  --gold: #C8A97E;
+  --gray: #888880;
+  --light: #E8E6E0;
+}
+
+body {
+  font-family: 'Karla', sans-serif;
+  background: var(--stone);
+  color: var(--black);
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 56px;
+  background: rgba(250,250,248,0.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--light);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-weight: 600; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--black);
+}
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--gray); text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--black); }
+.nav-cta {
+  background: var(--black); color: var(--stone);
+  padding: 10px 22px; font-size: 11px; letter-spacing: 1.5px;
+  text-transform: uppercase; text-decoration: none;
+  border: 1px solid var(--black); transition: all 0.25s;
+}
+.nav-cta:hover { background: transparent; color: var(--black); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--light);
+}
+.hero-left {
+  padding: 140px 56px 80px;
+  display: flex; flex-direction: column; justify-content: center;
+  border-right: 1px solid var(--light);
+  position: relative;
+}
+.hero-eyebrow {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gray); margin-bottom: 32px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.hero-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 6vw, 88px);
+  font-weight: 400; line-height: 1.0;
+  letter-spacing: -1px; color: var(--black); margin-bottom: 32px;
+}
+.hero-h1 em { font-style: italic; color: var(--gold); }
+.hero-sub {
+  font-size: 15px; color: var(--gray); line-height: 1.7;
+  font-weight: 300; max-width: 380px; margin-bottom: 48px;
+}
+.hero-actions { display: flex; gap: 16px; align-items: center; }
+.btn-black {
+  background: var(--black); color: var(--stone);
+  padding: 14px 32px; font-size: 11px; letter-spacing: 1.5px;
+  text-transform: uppercase; text-decoration: none;
+  border: 1px solid var(--black); transition: all 0.25s;
+}
+.btn-black:hover { background: transparent; color: var(--black); }
+.btn-ghost {
+  color: var(--black); font-size: 12px; letter-spacing: 1px;
+  text-transform: uppercase; text-decoration: none;
+  border-bottom: 1px solid var(--light); padding-bottom: 2px;
+  transition: border-color 0.2s;
+}
+.btn-ghost:hover { border-color: var(--black); }
+.hero-stats {
+  position: absolute; bottom: 56px; left: 56px;
+  display: flex; gap: 32px;
+}
+.hstat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px; font-weight: 600; line-height: 1; color: var(--black);
+}
+.hstat-lab {
+  font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--gray); margin-top: 4px;
+}
+
+.hero-right {
+  background: var(--warm);
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  padding: 140px 56px 80px;
+}
+
+/* Phone */
+.phone {
+  width: 220px; height: 440px;
+  background: var(--stone); border: 1px solid var(--light);
+  position: relative;
+  box-shadow: 16px 24px 64px rgba(0,0,0,0.12), -4px -4px 0 var(--black);
+}
+.phone-bar { height: 3px; background: var(--black); width: 60px; margin: 12px auto 0; }
+.phone-inner { padding: 12px 14px; }
+.phone-header-strip {
+  background: var(--black); color: var(--stone);
+  margin: -12px -14px 12px; padding: 12px 14px;
+}
+.phone-hname { font-family: 'Cormorant Garamond', serif; font-size: 15px; letter-spacing: 2px; text-transform: uppercase; }
+.phone-hsub { font-size: 9px; color: rgba(255,255,255,0.5); letter-spacing: 1px; margin-top: 2px; }
+.phone-langs { display: flex; gap: 4px; margin-bottom: 12px; }
+.plang { font-size: 8px; letter-spacing: 1px; padding: 3px 6px; border: 1px solid var(--light); color: var(--gray); text-transform: uppercase; }
+.plang.on { background: var(--black); color: var(--stone); border-color: var(--black); }
+.phone-cat {
+  font-size: 8px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 8px;
+  display: flex; align-items: center; gap: 6px;
+}
+.phone-cat::after { content: ''; flex: 1; height: 1px; background: var(--light); }
+.phone-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; border-bottom: 1px solid var(--light); font-size: 10px;
+}
+.pname { color: var(--black); }
+.pprice { color: var(--gray); font-size: 9px; }
+.phone-cta {
+  position: absolute; bottom: 16px; left: 14px; right: 14px;
+  background: var(--black); color: var(--stone);
+  text-align: center; padding: 10px;
+  font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+}
+.phone-tag {
+  position: absolute; top: -18px; right: -32px;
+  background: var(--stone); border: 1px solid var(--light);
+  padding: 8px 14px; font-size: 10px; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--black);
+  box-shadow: 4px 4px 0 var(--gold);
+  animation: fl 3s ease-in-out infinite;
+}
+.phone-tag2 {
+  position: absolute; bottom: 40px; left: -40px;
+  background: var(--black); color: var(--stone);
+  padding: 8px 14px; font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+  animation: fl 3s ease-in-out 1.5s infinite;
+}
+@keyframes fl { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+
+/* MARQUEE */
+.marquee-wrap {
+  overflow: hidden; padding: 14px 0; background: var(--black);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.marquee { display: flex; animation: scroll 22s linear infinite; white-space: nowrap; }
+.marquee-item {
+  padding: 0 28px; font-size: 10px; letter-spacing: 3px;
+  text-transform: uppercase; color: rgba(255,255,255,0.35);
+  border-right: 1px solid rgba(255,255,255,0.08); flex-shrink: 0;
+}
+.marquee-item.acc { color: var(--gold); }
+@keyframes scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* SECTIONS */
+.section { padding: 100px 56px; }
+.sec-label {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+.sec-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+.sec-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 60px);
+  font-weight: 400; line-height: 1.1; letter-spacing: -0.5px;
+  color: var(--black); margin-bottom: 20px;
+}
+.sec-sub {
+  font-size: 15px; color: var(--gray); line-height: 1.7;
+  font-weight: 300; max-width: 500px; margin-bottom: 56px;
+}
+
+/* PROBLEMS */
+.problems-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: var(--light); border: 1px solid var(--light);
+}
+.prob-card { background: var(--stone); padding: 40px 36px; transition: background 0.25s; }
+.prob-card:hover { background: var(--warm); }
+.prob-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 64px; font-weight: 400; line-height: 1;
+  color: var(--light); margin-bottom: 20px;
+}
+.prob-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 600; color: var(--black); margin-bottom: 12px;
+}
+.prob-text { font-size: 14px; color: var(--gray); line-height: 1.65; font-weight: 300; }
+
+/* FEATURES */
+.features-section { background: var(--black); padding: 100px 56px; }
+.features-section .sec-title { color: var(--stone); }
+.features-section .sec-sub { color: rgba(255,255,255,0.4); }
+.features-grid {
+  display: grid; grid-template-columns: repeat(2,1fr);
+  gap: 1px; background: rgba(255,255,255,0.07);
+}
+.feat {
+  padding: 48px 40px; background: var(--black);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.25s; position: relative; overflow: hidden;
+}
+.feat:hover { background: #1a1a1a; }
+.feat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px; font-weight: 400; line-height: 1;
+  color: rgba(255,255,255,0.04);
+  position: absolute; top: 16px; right: 24px; pointer-events: none;
+}
+.feat-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px; font-weight: 600; color: var(--stone); margin-bottom: 12px;
+}
+.feat-text { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.65; font-weight: 300; }
+.feat-tag {
+  display: inline-block; margin-top: 20px;
+  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 2px;
+}
+
+/* LANGUAGES */
+.langs-section {
+  padding: 72px 56px; text-align: center;
+  border-top: 1px solid var(--light); border-bottom: 1px solid var(--light);
+}
+.langs-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px; font-weight: 400; font-style: italic;
+  color: var(--black); margin-bottom: 40px;
+}
+.langs-row { display: flex; justify-content: center; flex-wrap: wrap; }
+.lang-item {
+  padding: 16px 32px; border-right: 1px solid var(--light);
+  font-size: 13px; letter-spacing: 1px; color: var(--gray);
+  transition: all 0.2s; cursor: default;
+}
+.lang-item:first-child { border-left: 1px solid var(--light); }
+.lang-item:hover { background: var(--warm); color: var(--black); }
+.lang-item span { display: block; font-size: 22px; margin-bottom: 4px; }
+
+/* PRICING */
+.pricing-section { padding: 100px 56px; background: var(--warm); }
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: var(--light); border: 1px solid var(--light);
+  max-width: 960px; margin: 0 auto;
+}
+.price-card { background: var(--stone); padding: 48px 36px; position: relative; }
+.price-card.featured { background: var(--black); }
+.price-badge {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  background: var(--gold); color: var(--black);
+  padding: 4px 16px; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500;
+}
+.price-plan { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); margin-bottom: 24px; }
+.price-card.featured .price-plan { color: rgba(255,255,255,0.4); }
+.price-amount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 64px; font-weight: 400; color: var(--black); line-height: 1;
+}
+.price-card.featured .price-amount { color: var(--stone); }
+.price-amount sup { font-size: 24px; vertical-align: top; margin-top: 12px; font-family: 'Karla', sans-serif; }
+.price-recur { font-size: 12px; color: var(--gray); margin: 8px 0 32px; }
+.price-card.featured .price-recur { color: rgba(255,255,255,0.4); }
+.price-divider { height: 1px; background: var(--light); margin-bottom: 28px; }
+.price-card.featured .price-divider { background: rgba(255,255,255,0.1); }
+.price-list { list-style: none; margin-bottom: 40px; }
+.price-list li {
+  font-size: 13px; color: var(--gray); padding: 7px 0;
+  border-bottom: 1px solid var(--light);
+  display: flex; gap: 10px; align-items: center; font-weight: 300;
+}
+.price-card.featured .price-list li { color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.08); }
+.price-list li::before { content: '—'; color: var(--gold); font-size: 10px; flex-shrink: 0; }
+.price-btn {
+  display: block; text-align: center; padding: 14px;
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none; transition: all 0.25s;
+  border: 1px solid var(--black); color: var(--black);
+}
+.price-btn:hover { background: var(--black); color: var(--stone); }
+.price-card.featured .price-btn { border-color: var(--stone); color: var(--stone); }
+.price-card.featured .price-btn:hover { background: var(--stone); color: var(--black); }
+
+/* CTA */
+.cta-section {
+  padding: 120px 56px; background: var(--stone);
+  border-top: 1px solid var(--light);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.cta-left .sec-title { margin-bottom: 8px; }
+.cta-left p { font-size: 14px; color: var(--gray); line-height: 1.7; font-weight: 300; }
+.cta-right { display: flex; flex-direction: column; gap: 16px; }
+.cta-email-btn {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 28px; background: var(--black); color: var(--stone);
+  text-decoration: none; border: 1px solid var(--black); transition: all 0.25s;
+}
+.cta-email-btn:hover { background: transparent; color: var(--black); }
+.cta-lbl { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.5; display: block; margin-bottom: 4px; }
+.cta-val { font-family: 'Cormorant Garamond', serif; font-size: 18px; }
+.cta-arrow { font-size: 20px; }
+.cta-demo-btn {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 28px; background: transparent; color: var(--black);
+  text-decoration: none; border: 1px solid var(--light); transition: all 0.25s;
+}
+.cta-demo-btn:hover { border-color: var(--black); }
+.cta-note { font-size: 11px; color: var(--gray); letter-spacing: 0.5px; padding-top: 8px; border-top: 1px solid var(--light); }
+
+/* FOOTER */
+footer {
+  background: var(--black); padding: 32px 56px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px; letter-spacing: 4px; text-transform: uppercase; color: var(--stone);
+}
+footer p { font-size: 11px; color: rgba(255,255,255,0.25); letter-spacing: 0.5px; }
+footer a { color: rgba(255,255,255,0.25); text-decoration: none; transition: color 0.2s; }
+footer a:hover { color: var(--gold); }
+
+/* ANIMATIONS */
+.fade { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.fade.in { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 100px 24px 200px; border-right: none; border-bottom: 1px solid var(--light); }
+  .hero-right { display: none; }
+  .hero-stats { bottom: 40px; left: 24px; }
+  .section, .features-section, .pricing-section { padding: 64px 24px; }
+  .problems-grid, .features-grid, .pricing-grid { grid-template-columns: 1fr; }
+  .langs-section { padding: 56px 24px; }
+  .lang-item { padding: 12px 20px; }
+  .cta-section { grid-template-columns: 1fr; padding: 64px 24px; gap: 40px; }
+  footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Menú QR</div>
+  <div class="nav-links">
+    <a href="#problema">El problema</a>
+    <a href="#funciones">Funciones</a>
+    <a href="#precios">Precios</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <a href="#contacto" class="nav-cta">Prueba 10 días gratis</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Buenos Aires · Argentina · 2026</div>
+    <h1 class="hero-h1">Tu menú.<br><em>6 idiomas.</em><br>Un QR.</h1>
+    <p class="hero-sub">Para restaurantes que quieren captar clientes turistas sin cambiar cómo trabajan. Sin apps. Sin reimprimir.</p>
+    <div class="hero-actions">
+      <a href="mailto:semen.tmpk@gmail.com?subject=Quiero%20el%20men%C3%BA%20digital%20QR&body=Hola%2C%20me%20interesa%20probar%20el%20men%C3%BA%20digital%20QR%20para%20mi%20negocio." class="btn-black">Prueba gratuita 10 días</a>
+      <a href="https://mar-mesa.vercel.app" target="_blank" class="btn-ghost">Ver demo en vivo</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="hstat-num">6</div><div class="hstat-lab">Idiomas</div></div>
+      <div><div class="hstat-num">66%</div><div class="hstat-lab">Sin web</div></div>
+      <div><div class="hstat-num">10</div><div class="hstat-lab">Días gratis</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div style="position:relative;">
+      <div class="phone-tag">6 Idiomas</div>
+      <div class="phone">
+        <div class="phone-bar"></div>
+        <div class="phone-inner">
+          <div class="phone-header-strip">
+            <div class="phone-hname">Bar Piedras</div>
+            <div class="phone-hsub">Palermo · Buenos Aires</div>
+          </div>
+          <div class="phone-langs">
+            <div class="plang on">ES</div>
+            <div class="plang">EN</div>
+            <div class="plang">PT</div>
+            <div class="plang">FR</div>
+            <div class="plang">DE</div>
+          </div>
+          <div class="phone-cat">Entradas</div>
+          <div class="phone-row"><span class="pname">Ensalada mixta</span><span class="pprice">$2.800</span></div>
+          <div class="phone-row"><span class="pname">Rabas fritas</span><span class="pprice">$4.500</span></div>
+          <div class="phone-cat" style="margin-top:10px;">Platos</div>
+          <div class="phone-row"><span class="pname">Bife de chorizo</span><span class="pprice">$9.200</span></div>
+          <div class="phone-row"><span class="pname">Milanesa napolitana</span><span class="pprice">$7.800</span></div>
+          <div class="phone-cta">Ver mi pedido →</div>
+        </div>
+      </div>
+      <div class="phone-tag2">Pedido al mozo</div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee">
+    <div class="marquee-item acc">Español</div><div class="marquee-item">English</div>
+    <div class="marquee-item acc">Português</div><div class="marquee-item">Français</div>
+    <div class="marquee-item acc">Deutsch</div><div class="marquee-item">Italiano</div>
+    <div class="marquee-item">· Menú Digital QR ·</div>
+    <div class="marquee-item acc">Español</div><div class="marquee-item">English</div>
+    <div class="marquee-item acc">Português</div><div class="marquee-item">Français</div>
+    <div class="marquee-item acc">Deutsch</div><div class="marquee-item">Italiano</div>
+    <div class="marquee-item">· Menú Digital QR ·</div>
+  </div>
+</div>
+
+<section class="section" id="problema">
+  <div class="sec-label">El problema</div>
+  <h2 class="sec-title">¿Por qué perdés<br>clientes turistas?</h2>
+  <p class="sec-sub">Buenos Aires recibe millones de turistas al año. La mayoría no habla español. Sin menú en su idioma, piden lo primero que ven — o se van.</p>
+  <div class="problems-grid">
+    <div class="prob-card fade">
+      <div class="prob-num">01</div>
+      <div class="prob-title">El menú en papel</div>
+      <p class="prob-text">Hay que reimprimir cada vez que cambian los precios. Con la inflación argentina, eso es cada pocas semanas. Caro, lento, y siempre desactualizado.</p>
+    </div>
+    <div class="prob-card fade">
+      <div class="prob-num">02</div>
+      <div class="prob-title">El PDF con QR</div>
+      <p class="prob-text">Solo en español. No se actualiza. No tiene carrito. El turista no entiende nada y pide señalando con el dedo — o directamente se va.</p>
+    </div>
+    <div class="prob-card fade">
+      <div class="prob-num">03</div>
+      <div class="prob-title">El sitio de agencia</div>
+      <p class="prob-text">Cuesta entre USD 500 y 2.000. Tarda semanas. Encima no tiene menú interactivo ni QR para las mesas. Demasiado para un café del barrio.</p>
+    </div>
+  </div>
+</section>
+
+<section class="features-section" id="funciones">
+  <div class="sec-label" style="color:rgba(200,169,126,0.7);">
+    La solución
+  </div>
+  <h2 class="sec-title" style="color:var(--stone);">Todo lo que necesita<br>tu negocio</h2>
+  <p class="sec-sub">Un menú digital moderno, un sitio web completo y un QR para cada mesa. Todo en uno.</p>
+  <div class="features-grid">
+    <div class="feat fade">
+      <div class="feat-num">01</div>
+      <div class="feat-title">Menú en 6 idiomas automático</div>
+      <p class="feat-text">Español, inglés, portugués, francés, alemán e italiano. El cliente elige su idioma con un toque. Sin apps, sin descargas.</p>
+      <div class="feat-tag">Multilenguaje</div>
+    </div>
+    <div class="feat fade">
+      <div class="feat-num">02</div>
+      <div class="feat-title">Carrito de pedido para el mozo</div>
+      <p class="feat-text">El cliente arma su pedido, le muestra la pantalla al mozo y listo. Sin malentendidos, sin errores, sin frustraciones.</p>
+      <div class="feat-tag">Sin errores</div>
+    </div>
+    <div class="feat fade">
+      <div class="feat-num">03</div>
+      <div class="feat-title">Sitio web completo del local</div>
+      <p class="feat-text">Fotos del lugar, dirección con mapa, horarios, WhatsApp y redes sociales. Todo en una sola página profesional.</p>
+      <div class="feat-tag">Presencia online</div>
+    </div>
+    <div class="feat fade">
+      <div class="feat-num">04</div>
+      <div class="feat-title">Precios en tiempo real</div>
+      <p class="feat-text">¿Cambió el precio de un plato? Se actualiza en segundos. El QR sigue siendo el mismo, siempre.</p>
+      <div class="feat-tag">Tiempo real</div>
+    </div>
+  </div>
+</section>
+
+<section class="langs-section fade">
+  <div class="langs-title">Tu menú habla el idioma de tus clientes</div>
+  <div class="langs-row">
+    <div class="lang-item"><span>🇦🇷</span>Español</div>
+    <div class="lang-item"><span>🇺🇸</span>English</div>
+    <div class="lang-item"><span>🇧🇷</span>Português</div>
+    <div class="lang-item"><span>🇫🇷</span>Français</div>
+    <div class="lang-item"><span>🇩🇪</span>Deutsch</div>
+    <div class="lang-item"><span>🇮🇹</span>Italiano</div>
+  </div>
+</section>
+
+<section class="pricing-section" id="precios">
+  <div style="text-align:center; margin-bottom:56px;">
+    <div class="sec-label" style="justify-content:center;">Planes y precios</div>
+    <h2 class="sec-title" style="text-align:center;">Sin letra chica</h2>
+    <p class="sec-sub" style="margin:0 auto; text-align:center;">Elegí el plan que mejor se adapta a tu negocio. Cancelás cuando querés.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card fade">
+      <div class="price-plan">Menú QR</div>
+      <div class="price-amount"><sup>$</sup>80</div>
+      <div class="price-recur">+ $15 / mes</div>
+      <div class="price-divider"></div>
+      <ul class="price-list">
+        <li>Menú digital con QR</li>
+        <li>3 idiomas</li>
+        <li>Hasta 20 platos</li>
+        <li>Carrito de pedido</li>
+        <li>Soporte WhatsApp</li>
+      </ul>
+      <a href="mailto:semen.tmpk@gmail.com?subject=Plan%20Men%C3%BA%20QR" class="price-btn">Empezar →</a>
+    </div>
+    <div class="price-card featured fade">
+      <div class="price-badge">Más elegido</div>
+      <div class="price-plan">Sitio Web</div>
+      <div class="price-amount"><sup>$</sup>180</div>
+      <div class="price-recur">+ $25 / mes</div>
+      <div class="price-divider"></div>
+      <ul class="price-list">
+        <li>Todo el plan Menú QR</li>
+        <li>6 idiomas completos</li>
+        <li>Hasta 50 platos con fotos</li>
+        <li>Página del local completa</li>
+        <li>Mapa + contacto + redes</li>
+        <li>Soporte prioritario</li>
+      </ul>
+      <a href="mailto:semen.tmpk@gmail.com?subject=Plan%20Sitio%20Web" class="price-btn">Empezar →</a>
+    </div>
+    <div class="price-card fade">
+      <div class="price-plan">Presencia Total</div>
+      <div class="price-amount"><sup>$</sup>300</div>
+      <div class="price-recur">+ $35 / mes</div>
+      <div class="price-divider"></div>
+      <ul class="price-list">
+        <li>Todo el plan Sitio Web</li>
+        <li>Platos ilimitados</li>
+        <li>Diseño personalizado</li>
+        <li>Integración Instagram</li>
+        <li>Reseñas de clientes</li>
+        <li>Soporte VIP 24hs</li>
+      </ul>
+      <a href="mailto:semen.tmpk@gmail.com?subject=Plan%20Presencia%20Total" class="price-btn">Empezar →</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contacto">
+  <div class="cta-left">
+    <div class="sec-label">Contacto</div>
+    <h2 class="sec-title">¿Te interesa<br>para tu local?</h2>
+    <p>10 días de prueba gratuita. Sin tarjeta de crédito. Sin compromiso. Si no te convence, no pagás nada.</p>
+  </div>
+  <div class="cta-right">
+    <a href="mailto:semen.tmpk@gmail.com?subject=Quiero%20el%20men%C3%BA%20digital%20QR&body=Hola%2C%20me%20interesa%20probar%20el%20men%C3%BA%20digital%20QR%20para%20mi%20negocio." class="cta-email-btn">
+      <div>
+        <span class="cta-lbl">Escribinos a</span>
+        <span class="cta-val">semen.tmpk@gmail.com</span>
+      </div>
+      <span class="cta-arrow">→</span>
+    </a>
+    <a href="https://mar-mesa.vercel.app" target="_blank" class="cta-demo-btn">
+      <div>
+        <span class="cta-lbl">Ver demo en vivo</span>
+        <span class="cta-val" style="font-size:16px;">mar-mesa.vercel.app</span>
+      </div>
+      <span class="cta-arrow">↗</span>
+    </a>
+    <div class="cta-note">Respondemos en menos de 24 horas · Buenos Aires, Argentina</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Menú QR</div>
+  <p>© 2026 · Buenos Aires, Argentina · <a href="mailto:semen.tmpk@gmail.com">semen.tmpk@gmail.com</a></p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('in'), i * 100);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
