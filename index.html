@@ -3,442 +3,260 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Цифровое меню QR — Ваш ресторан на 6 языках</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Karla:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Menú QR — Variante A: Bistro Noir</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+:root{
+  --bg:#0C0C0C; --panel:#161513; --panel2:#1C1A17; --border:#2A2825;
+  --gold:#C9A876; --gold-soft: rgba(201,168,118,0.15);
+  --text:#F3F1ED; --gray:#9B968C; --gray-dim:#5E5B54;
+}
+body{ font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; }
+h1,h2,.display{ font-family:'Oswald',sans-serif; text-transform:uppercase; letter-spacing:1px; }
 
-:root {
-  --black: #0E0E0E;
-  --stone: #FAFAF8;
-  --warm: #F2F0EB;
-  --gold: #C8A97E;
-  --gray: #888880;
-  --light: #E8E6E0;
-}
+nav{ position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center;
+  padding:22px 56px; background:rgba(12,12,12,0.92); backdrop-filter:blur(14px); border-bottom:1px solid var(--border); }
+.nav-logo{ font-family:'Oswald',sans-serif; font-size:18px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--text); }
+.nav-logo span{ color:var(--gold); }
+.nav-links{ display:flex; gap:34px; }
+.nav-links a{ font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gray); text-decoration:none; transition:color .2s; }
+.nav-links a:hover{ color:var(--gold); }
+.nav-cta{ background:var(--gold); color:#171510; padding:11px 24px; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase;
+  text-decoration:none; border:1px solid var(--gold); transition:all .25s; }
+.nav-cta:hover{ background:transparent; color:var(--gold); }
 
-body {
-  font-family: 'Karla', sans-serif;
-  background: var(--stone);
-  color: var(--black);
-  overflow-x: hidden;
-}
+.hero{ min-height:100vh; display:grid; grid-template-columns:1.05fr .95fr; border-bottom:1px solid var(--border); }
+.hero-left{ padding:150px 56px 80px; display:flex; flex-direction:column; justify-content:center; border-right:1px solid var(--border); }
+.hero-eyebrow{ font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:28px; display:flex; align-items:center; gap:12px; }
+.hero-eyebrow::before{ content:''; width:30px; height:1px; background:var(--gold); }
+.hero-h1{ font-size:clamp(46px,5.6vw,76px); font-weight:700; line-height:1.04; color:var(--text); margin-bottom:30px; }
+.hero-h1 .accent{ color:var(--gold); }
+.hero-sub{ font-family:'Inter',sans-serif; text-transform:none; letter-spacing:normal; font-size:15px; color:var(--gray); line-height:1.7; font-weight:300; max-width:420px; margin-bottom:44px; }
+.hero-actions{ display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+.btn-gold{ background:var(--gold); color:#171510; padding:15px 32px; font-family:'Oswald',sans-serif; font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase;
+  text-decoration:none; border:1px solid var(--gold); transition:all .25s; }
+.btn-gold:hover{ background:transparent; color:var(--gold); }
+.btn-line{ font-family:'Inter',sans-serif; color:var(--text); font-size:13px; letter-spacing:.5px; text-decoration:none; border-bottom:1px solid var(--border); padding-bottom:3px; transition:border-color .2s; }
+.btn-line:hover{ border-color:var(--gold); color:var(--gold); }
+.hero-stats{ display:flex; gap:40px; margin-top:56px; }
+.hstat-num{ font-family:'Oswald',sans-serif; font-size:34px; font-weight:700; color:var(--text); line-height:1; }
+.hstat-lab{ font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--gray); margin-top:6px; }
 
-/* NAV */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 20px 56px;
-  background: rgba(250,250,248,0.94);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--light);
-}
-.nav-logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px; font-weight: 600; letter-spacing: 4px;
-  text-transform: uppercase; color: var(--black);
-}
-.nav-links { display: flex; gap: 32px; align-items: center; }
-.nav-links a {
-  font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
-  color: var(--gray); text-decoration: none; transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--black); }
-.nav-cta {
-  background: var(--black); color: var(--stone);
-  padding: 10px 22px; font-size: 11px; letter-spacing: 1.5px;
-  text-transform: uppercase; text-decoration: none;
-  border: 1px solid var(--black); transition: all 0.25s;
-}
-.nav-cta:hover { background: transparent; color: var(--black); }
+.hero-right{ background:#070707; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:140px 40px 80px; position:relative; }
+.hero-right::before{ content:''; position:absolute; inset:36px; border:1px solid rgba(201,168,118,0.18); pointer-events:none; }
+.hero-right-tag{ position:absolute; top:64px; left:0; right:0; text-align:center; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--gray); }
 
-/* HERO */
-.hero {
-  min-height: 100vh;
-  display: grid; grid-template-columns: 1fr 1fr;
-  border-bottom: 1px solid var(--light);
-}
-.hero-left {
-  padding: 140px 56px 80px;
-  display: flex; flex-direction: column; justify-content: center;
-  border-right: 1px solid var(--light);
-  position: relative;
-}
-.hero-eyebrow {
-  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
-  color: var(--gray); margin-bottom: 32px;
-  display: flex; align-items: center; gap: 12px;
-}
-.hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
-.hero-h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(52px, 6vw, 88px);
-  font-weight: 400; line-height: 1.0;
-  letter-spacing: -1px; color: var(--black); margin-bottom: 32px;
-}
-.hero-h1 em { font-style: italic; color: var(--gold); }
-.hero-sub {
-  font-size: 15px; color: var(--gray); line-height: 1.7;
-  font-weight: 300; max-width: 380px; margin-bottom: 48px;
-}
-.hero-actions { display: flex; gap: 16px; align-items: center; }
-.btn-black {
-  background: var(--black); color: var(--stone);
-  padding: 14px 32px; font-size: 11px; letter-spacing: 1.5px;
-  text-transform: uppercase; text-decoration: none;
-  border: 1px solid var(--black); transition: all 0.25s;
-}
-.btn-black:hover { background: transparent; color: var(--black); }
-.btn-ghost {
-  color: var(--black); font-size: 12px; letter-spacing: 1px;
-  text-transform: uppercase; text-decoration: none;
-  border-bottom: 1px solid var(--light); padding-bottom: 2px;
-  transition: border-color 0.2s;
-}
-.btn-ghost:hover { border-color: var(--black); }
-.hero-stats {
-  position: absolute; bottom: 56px; left: 56px;
-  display: flex; gap: 32px;
-}
-.hstat-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 36px; font-weight: 600; line-height: 1; color: var(--black);
-}
-.hstat-lab {
-  font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
-  color: var(--gray); margin-top: 4px;
-}
+.phone-frame{ width:248px; background:#111; border-radius:34px; padding:14px 10px; box-shadow:0 36px 90px rgba(0,0,0,.55), 0 0 0 1px rgba(201,168,118,0.25);
+  display:flex; flex-direction:column; position:relative; z-index:2; }
+.phone-top-bar{ display:flex; justify-content:center; padding-bottom:10px; }
+.phone-notch{ width:70px; height:18px; background:#000; border-radius:0 0 12px 12px; }
+.phone-screen-wrap{ width:100%; height:456px; border-radius:12px; overflow:hidden; background:#1a1a1a; position:relative; overflow-y:auto; }
+.phone-bottom-bar{ display:flex; justify-content:center; padding-top:10px; }
+.phone-home-btn{ width:76px; height:4px; background:rgba(255,255,255,.15); border-radius:2px; }
 
-.hero-right {
-  background: var(--warm);
-  display: flex; flex-direction: column;
-  justify-content: center; align-items: center;
-  padding: 140px 56px 80px;
-}
+.ms-lang-badge{ position:absolute; top:10px; left:10px; z-index:10; background:rgba(0,0,0,.7); color:#fff; font-size:9px; padding:4px 8px; border-radius:4px; }
+.ms-hero{ height:138px; background:#2a2a2a; position:relative; overflow:hidden;
+  background-image:repeating-linear-gradient(45deg,#222 0,#222 2px,#2a2a2a 2px,#2a2a2a 12px); }
+.ms-hero-overlay{ position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,.3), rgba(0,0,0,.7)); }
+.ms-hero-content{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+.ms-location{ font-size:8px; letter-spacing:3px; color:rgba(255,255,255,.6); margin-bottom:4px; }
+.ms-title{ font-family:'Oswald',sans-serif; font-size:24px; font-weight:600; color:#fff; line-height:1; margin-bottom:6px; }
+.ms-subtitle{ font-size:7px; letter-spacing:2px; color:rgba(255,255,255,.5); }
+.ms-cats{ display:flex; background:#111; border-bottom:1px solid rgba(255,255,255,.08); overflow-x:auto; }
+.ms-cat{ padding:10px 12px; font-size:8px; letter-spacing:1.5px; color:rgba(255,255,255,.4); white-space:nowrap; flex-shrink:0; border-bottom:2px solid transparent; }
+.ms-cat.active{ color:#fff; border-bottom-color:var(--gold); }
+.ms-body{ background:#fff; padding:12px 14px; }
+.ms-section-title{ font-family:'Oswald',sans-serif; font-size:15px; font-weight:600; letter-spacing:.5px; color:#111; margin-bottom:8px; display:flex; justify-content:space-between; align-items:baseline; }
+.ms-section-title span{ font-size:7px; letter-spacing:1.5px; color:#aaa; font-family:'Inter',sans-serif; text-transform:none; }
+.ms-item{ display:flex; justify-content:space-between; gap:8px; padding:10px 0; border-bottom:1px dotted #ddd; }
+.ms-item-info{ flex:1; }
+.ms-item-tag{ font-size:7px; letter-spacing:1.5px; color:var(--gold); margin-bottom:2px; font-weight:600; }
+.ms-item-name{ font-size:11px; font-weight:600; color:#111; margin-bottom:2px; }
+.ms-item-desc{ font-size:9px; color:#888; line-height:1.4; font-weight:300; }
+.ms-item-right{ display:flex; flex-direction:column; align-items:flex-end; gap:6px; flex-shrink:0; }
+.ms-item-price{ font-size:11px; font-weight:600; color:#111; white-space:nowrap; }
+.ms-item-btn{ width:20px; height:20px; border:1px solid #ddd; display:flex; align-items:center; justify-content:center; font-size:14px; color:#555; border-radius:4px; }
+.phone-tag{ position:absolute; top:-18px; right:-30px; background:var(--gold); color:#171510; padding:8px 14px; font-family:'Oswald',sans-serif; font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase;
+  animation:fl 3s ease-in-out infinite; z-index:5; }
+.phone-tag2{ position:absolute; bottom:34px; left:-38px; background:#0C0C0C; border:1px solid var(--gold); color:var(--gold); padding:8px 14px; font-size:10px; letter-spacing:1px; text-transform:uppercase;
+  animation:fl 3s ease-in-out 1.5s infinite; z-index:5; }
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 
-/* Phone iframe frame */
-.phone-frame {
-  width: 240px;
-  background: #111;
-  border-radius: 36px;
-  padding: 14px 10px;
-  box-shadow: 16px 24px 64px rgba(0,0,0,0.2), -4px -4px 0 var(--gold);
-  display: flex; flex-direction: column;
-}
-.phone-top-bar { display: flex; justify-content: center; padding-bottom: 10px; }
-.phone-notch { width: 72px; height: 20px; background: #000; border-radius: 0 0 14px 14px; }
-.phone-screen-wrap {
-  width: 100%; height: 460px;
-  border-radius: 12px; overflow: hidden;
-  background: #1a1a1a;
-  position: relative; overflow-y: auto;
-}
-.phone-bottom-bar { display: flex; justify-content: center; padding-top: 12px; }
-.phone-home-btn { width: 80px; height: 4px; background: rgba(255,255,255,0.15); border-radius: 2px; }
+.marquee-wrap{ overflow:hidden; padding:15px 0; background:#070707; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.marquee{ display:flex; animation:scroll 22s linear infinite; white-space:nowrap; }
+.marquee-item{ padding:0 28px; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--gray-dim); border-right:1px solid var(--border); flex-shrink:0; }
+.marquee-item.acc{ color:var(--gold); }
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* Menu screen styles */
-.ms-lang-badge {
-  position: absolute; top: 10px; left: 10px; z-index: 10;
-  background: rgba(0,0,0,0.7); color: white;
-  font-size: 9px; padding: 4px 8px; border-radius: 4px;
-}
-.ms-hero {
-  height: 140px; background: #2a2a2a;
-  position: relative; overflow: hidden;
-  background-image: repeating-linear-gradient(
-    45deg, #222 0px, #222 2px, #2a2a2a 2px, #2a2a2a 12px
-  );
-}
-.ms-hero-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
-}
-.ms-hero-content {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center; text-align: center;
-}
-.ms-location { font-size: 8px; letter-spacing: 3px; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
-.ms-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 28px; font-style: italic; color: white; line-height: 1;
-  margin-bottom: 6px;
-}
-.ms-subtitle { font-size: 7px; letter-spacing: 2px; color: rgba(255,255,255,0.5); }
+.section{ padding:104px 56px; }
+.sec-label{ font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:18px; display:flex; align-items:center; gap:12px; }
+.sec-label::before{ content:''; width:26px; height:1px; background:var(--gold); }
+.sec-title{ font-size:clamp(34px,3.8vw,54px); font-weight:700; line-height:1.12; color:var(--text); margin-bottom:22px; }
+.sec-sub{ font-family:'Inter',sans-serif; text-transform:none; letter-spacing:normal; font-size:15px; color:var(--gray); line-height:1.7; font-weight:300; max-width:520px; margin-bottom:56px; }
 
-.ms-cats {
-  display: flex; background: #111;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  overflow-x: auto;
-}
-.ms-cat {
-  padding: 10px 12px; font-size: 8px; letter-spacing: 1.5px;
-  color: rgba(255,255,255,0.4); white-space: nowrap; flex-shrink: 0;
-  border-bottom: 2px solid transparent;
-}
-.ms-cat.active { color: white; border-bottom-color: var(--gold); }
+.problems-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); }
+.prob-card{ background:var(--bg); padding:42px 36px; transition:background .25s; position:relative; }
+.prob-card::before{ content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform .3s; }
+.prob-card:hover{ background:var(--panel); } .prob-card:hover::before{ transform:scaleX(1); }
+.prob-num{ font-family:'Oswald',sans-serif; font-size:46px; font-weight:700; color:var(--border); margin-bottom:20px; line-height:1; }
+.prob-card:hover .prob-num{ color:var(--gold-soft); }
+.prob-title{ font-family:'Oswald',sans-serif; font-size:18px; font-weight:600; letter-spacing:.3px; text-transform:none; color:var(--text); margin-bottom:14px; line-height:1.35; }
+.prob-text{ font-size:14px; color:var(--gray); line-height:1.65; font-weight:300; }
 
-.ms-body { background: #fff; padding: 12px 14px; }
+.features-section{ background:#070707; padding:104px 56px; }
+.features-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--border); }
+.feat{ padding:48px 40px; background:#070707; border:1px solid var(--border); transition:background .25s; position:relative; }
+.feat:hover{ background:var(--panel); }
+.feat-num{ position:absolute; top:18px; right:28px; font-family:'Oswald',sans-serif; font-size:13px; color:var(--gray-dim); }
+.feat-title{ font-family:'Oswald',sans-serif; font-size:21px; font-weight:600; text-transform:none; letter-spacing:.3px; color:var(--text); margin-bottom:13px; }
+.feat-text{ font-size:14px; color:var(--gray); line-height:1.65; font-weight:300; }
+.feat-tag{ display:inline-block; margin-top:20px; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); border-bottom:1px solid var(--gold); padding-bottom:2px; }
+.feat-tag-addon{ border:1px solid var(--border); border-bottom:1px solid var(--border); padding:4px 10px; color:var(--gray); }
 
-.ms-section-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px; font-style: italic; color: #111;
-  margin-bottom: 8px;
-  display: flex; justify-content: space-between; align-items: baseline;
-}
-.ms-section-title span { font-size: 7px; font-style: normal; letter-spacing: 1.5px; color: #aaa; font-family: 'Karla', sans-serif; }
+.langs-section{ padding:76px 56px; text-align:center; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.langs-title{ font-family:'Oswald',sans-serif; font-size:24px; font-weight:500; text-transform:none; letter-spacing:.3px; color:var(--text); margin-bottom:40px; }
+.langs-title .accent{ color:var(--gold); }
+.langs-row{ display:flex; justify-content:center; flex-wrap:wrap; }
+.lang-item{ padding:16px 32px; border-right:1px solid var(--border); font-size:13px; letter-spacing:1px; color:var(--gray); transition:all .2s; }
+.lang-item:first-child{ border-left:1px solid var(--border); }
+.lang-item:hover{ background:var(--panel); color:var(--gold); }
+.lang-code{ display:block; font-family:'Oswald',sans-serif; font-size:11px; letter-spacing:2px; color:var(--gold); margin-bottom:8px; }
 
-.ms-item {
-  display: flex; justify-content: space-between; gap: 8px;
-  padding: 10px 0; border-bottom: 1px solid #eee;
-}
-.ms-item-info { flex: 1; }
-.ms-item-tag {
-  font-size: 7px; letter-spacing: 1.5px; color: var(--gold);
-  margin-bottom: 2px; font-weight: 500;
-}
-.ms-item-name { font-size: 11px; font-weight: 500; color: #111; margin-bottom: 2px; }
-.ms-item-desc { font-size: 9px; color: #888; line-height: 1.4; }
-.ms-item-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
-.ms-item-price { font-size: 11px; font-weight: 500; color: #111; white-space: nowrap; }
-.ms-item-btn {
-  width: 20px; height: 20px; border: 1px solid #ddd;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 14px; color: #555; border-radius: 4px;
-}
-.phone-tag {
-  position: absolute; top: -18px; right: -32px;
-  background: var(--stone); border: 1px solid var(--light);
-  padding: 8px 14px; font-size: 10px; letter-spacing: 1px;
-  text-transform: uppercase; color: var(--black);
-  box-shadow: 4px 4px 0 var(--gold);
-  animation: fl 3s ease-in-out infinite;
-}
-.phone-tag2 {
-  position: absolute; bottom: 40px; left: -40px;
-  background: var(--black); color: var(--stone);
-  padding: 8px 14px; font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
-  animation: fl 3s ease-in-out 1.5s infinite;
-}
-@keyframes fl { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+.section-alt{ background:var(--panel); border-top:1px solid var(--border); }
+.compare-wrap{ overflow-x:auto; border:1px solid var(--border); }
+.compare-table{ width:100%; border-collapse:collapse; min-width:640px; }
+.compare-table th, .compare-table td{ padding:18px 20px; text-align:left; font-size:13px; border-bottom:1px solid var(--border); }
+.compare-table thead th{ font-family:'Oswald',sans-serif; font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:var(--gray); background:var(--bg); border-bottom:1px solid var(--border); }
+.compare-table .ch-empty{ width:200px; }
+.compare-table thead .ch-highlight{ color:var(--gold); }
+.compare-table .rlabel{ font-weight:500; color:var(--text); background:var(--bg); white-space:nowrap; }
+.compare-table tbody td{ color:var(--gray); font-weight:300; background:var(--panel); }
+.compare-table tbody td.hl{ color:var(--gold); font-weight:500; background:rgba(201,168,118,0.06); }
+.compare-table tbody tr:last-child td{ border-bottom:none; }
 
-/* MARQUEE */
-.marquee-wrap {
-  overflow: hidden; padding: 14px 0; background: var(--black);
-  border-top: 1px solid rgba(255,255,255,0.06);
-}
-.marquee { display: flex; animation: scroll 22s linear infinite; white-space: nowrap; }
-.marquee-item {
-  padding: 0 28px; font-size: 10px; letter-spacing: 3px;
-  text-transform: uppercase; color: rgba(255,255,255,0.35);
-  border-right: 1px solid rgba(255,255,255,0.08); flex-shrink: 0;
-}
-.marquee-item.acc { color: var(--gold); }
-@keyframes scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.cards2{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); margin-bottom:56px; }
+.card-left{ background:var(--bg); padding:42px 38px; }
+.card-left .lbl{ font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:22px; }
+.feat-li{ display:flex; gap:14px; align-items:flex-start; margin-bottom:16px; }
+.feat-li:last-child{ margin-bottom:0; }
+.feat-li .dash{ color:var(--gold); flex-shrink:0; margin-top:2px; }
+.feat-li .t{ font-size:14px; font-weight:500; color:var(--text); margin-bottom:3px; }
+.feat-li .d{ font-size:12px; color:var(--gray); font-weight:300; }
+.card-right{ background:#070707; padding:42px 38px; display:flex; flex-direction:column; justify-content:space-between; }
+.card-right .lbl{ font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gray-dim); margin-bottom:22px; }
+.card-right .quote{ font-family:'Oswald',sans-serif; font-size:20px; font-weight:500; text-transform:none; letter-spacing:.3px; color:var(--text); line-height:1.35; margin-bottom:24px; }
+.card-right p{ font-size:13px; color:var(--gray); line-height:1.7; font-weight:300; margin-bottom:20px; }
+.price-block{ margin-top:36px; padding-top:30px; border-top:1px solid var(--border); }
+.price-block .plbl{ font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gray-dim); margin-bottom:8px; }
+.price-block .pval{ font-family:'Oswald',sans-serif; font-size:48px; font-weight:700; color:var(--gold); line-height:1; }
+.price-block .pval sup{ font-size:18px; vertical-align:top; margin-top:10px; font-family:'Inter',sans-serif; }
+.price-block .prec{ font-size:12px; color:var(--gray-dim); margin:8px 0 24px; }
+.price-block a{ display:block; text-align:center; padding:14px; font-family:'Oswald',sans-serif; font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; text-decoration:none; border:1px solid var(--gold); color:var(--gold); transition:all .25s; }
+.price-block a:hover{ background:var(--gold); color:#171510; }
+.combo-bar{ background:var(--bg); border:1px solid var(--border); padding:26px 32px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+.combo-bar .t{ font-size:14px; font-weight:500; color:var(--text); margin-bottom:4px; }
+.combo-bar .d{ font-size:12px; color:var(--gray); font-weight:300; }
+.combo-bar a{ background:var(--gold); color:#171510; padding:12px 26px; font-family:'Oswald',sans-serif; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; text-decoration:none; white-space:nowrap; }
 
-/* SECTIONS */
-.section { padding: 100px 56px; }
-.sec-label {
-  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 16px;
-  display: flex; align-items: center; gap: 12px;
-}
-.sec-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
-.sec-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(36px, 4vw, 60px);
-  font-weight: 400; line-height: 1.1; letter-spacing: -0.5px;
-  color: var(--black); margin-bottom: 20px;
-}
-.sec-sub {
-  font-size: 15px; color: var(--gray); line-height: 1.7;
-  font-weight: 300; max-width: 500px; margin-bottom: 56px;
-}
+.pricing-section{ padding:104px 56px; background:var(--bg); }
 
-/* PROBLEMS */
-.problems-grid {
-  display: grid; grid-template-columns: repeat(3,1fr);
-  gap: 1px; background: var(--light); border: 1px solid var(--light);
-}
-.prob-card { background: var(--stone); padding: 40px 36px; transition: background 0.25s; }
-.prob-card:hover { background: var(--warm); }
-.prob-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 64px; font-weight: 400; line-height: 1;
-  color: var(--light); margin-bottom: 20px;
-}
-.prob-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px; font-weight: 600; color: var(--black); margin-bottom: 12px;
-}
-.prob-text { font-size: 14px; color: var(--gray); line-height: 1.65; font-weight: 300; }
+.base-plan{ max-width:980px; margin:0 auto 64px; border:1px solid var(--gold-soft); background:var(--panel); position:relative; }
+.base-plan-label{ position:absolute; top:-1px; left:40px; transform:translateY(-50%); background:var(--gold); color:#171510; padding:6px 18px; font-family:'Oswald',sans-serif; font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; }
+.base-plan-row{ display:grid; grid-template-columns:1.5fr 1fr; gap:1px; background:var(--border); }
+.base-plan-info{ background:var(--panel); padding:48px 44px 40px; }
+.base-plan-title{ font-family:'Oswald',sans-serif; font-size:24px; font-weight:600; color:var(--text); margin-bottom:14px; }
+.base-plan-desc{ font-size:14px; color:var(--gray); line-height:1.65; font-weight:300; margin-bottom:24px; max-width:440px; }
+.base-plan-list{ list-style:none; }
+.base-plan-list li{ font-size:13.5px; color:var(--gray); padding:8px 0; border-bottom:1px solid var(--border); display:flex; gap:10px; align-items:flex-start; font-weight:300; line-height:1.4; }
+.base-plan-list li:last-child{ border-bottom:none; }
+.base-plan-list li::before{ content:'—'; color:var(--gold); font-size:11px; flex-shrink:0; margin-top:1px; }
+.base-plan-price{ background:#070707; padding:48px 40px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; }
+.bp-amount{ font-family:'Oswald',sans-serif; font-size:56px; font-weight:700; color:var(--gold); line-height:1; }
+.bp-amount sup{ font-size:22px; vertical-align:top; margin-top:10px; font-family:'Inter',sans-serif; }
+.bp-recur{ font-size:12px; color:var(--gray-dim); margin:10px 0 28px; }
+.bp-btn{ display:block; width:100%; text-align:center; padding:14px; font-family:'Oswald',sans-serif; font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; text-decoration:none; border:1px solid var(--gold); background:var(--gold); color:#171510; transition:all .25s; }
+.bp-btn:hover{ background:transparent; color:var(--gold); }
 
-/* FEATURES */
-.features-section { background: var(--black); padding: 100px 56px; }
-.features-section .sec-title { color: var(--stone); }
-.features-section .sec-sub { color: rgba(255,255,255,0.4); }
-.features-grid {
-  display: grid; grid-template-columns: repeat(2,1fr);
-  gap: 1px; background: rgba(255,255,255,0.07);
-}
-.feat {
-  padding: 48px 40px; background: var(--black);
-  border: 1px solid rgba(255,255,255,0.06);
-  transition: background 0.25s; position: relative; overflow: hidden;
-}
-.feat:hover { background: #1a1a1a; }
-.feat-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 80px; font-weight: 400; line-height: 1;
-  color: rgba(255,255,255,0.04);
-  position: absolute; top: 16px; right: 24px; pointer-events: none;
-}
-.feat-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 24px; font-weight: 600; color: var(--stone); margin-bottom: 12px;
-}
-.feat-text { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.65; font-weight: 300; }
-.feat-tag {
-  display: inline-block; margin-top: 20px;
-  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 2px;
-}
+.addons-label{ text-align:center; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gray); margin-bottom:28px; }
+.addons-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:1px; background:var(--border); border:1px solid var(--border); max-width:980px; margin:0 auto; }
+.addon-card{ background:var(--panel); padding:30px 26px; transition:background .25s; }
+.addon-card:hover{ background:var(--panel2); }
+.addon-title{ font-family:'Oswald',sans-serif; font-size:16px; font-weight:600; color:var(--text); margin-bottom:10px; letter-spacing:.2px; }
+.addon-desc{ font-size:12.5px; color:var(--gray); line-height:1.55; font-weight:300; margin-bottom:18px; min-height:38px; }
+.addon-price{ font-family:'Oswald',sans-serif; font-size:13px; color:var(--gold); letter-spacing:.3px; }
+.addon-price span{ font-weight:600; }
 
-/* LANGUAGES */
-.langs-section {
-  padding: 72px 56px; text-align: center;
-  border-top: 1px solid var(--light); border-bottom: 1px solid var(--light);
-}
-.langs-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 32px; font-weight: 400; font-style: italic;
-  color: var(--black); margin-bottom: 40px;
-}
-.langs-row { display: flex; justify-content: center; flex-wrap: wrap; }
-.lang-item {
-  padding: 16px 32px; border-right: 1px solid var(--light);
-  font-size: 13px; letter-spacing: 1px; color: var(--gray);
-  transition: all 0.2s; cursor: default;
-}
-.lang-item:first-child { border-left: 1px solid var(--light); }
-.lang-item:hover { background: var(--warm); color: var(--black); }
-.lang-item span { display: block; font-size: 22px; margin-bottom: 4px; }
+.pricing-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); max-width:980px; margin:0 auto; }
+.price-card{ background:var(--panel); padding:48px 36px; position:relative; }
+.price-card.featured{ background:#070707; padding-top:60px; box-shadow:0 24px 64px rgba(0,0,0,.4); }
+.price-badge{ position:absolute; top:0; left:50%; transform:translate(-50%,-50%); background:var(--gold); color:#171510; padding:7px 20px; font-family:'Oswald',sans-serif; font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; white-space:nowrap; }
+.price-plan{ font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--gray); margin-bottom:24px; }
+.price-amount{ font-family:'Oswald',sans-serif; font-size:58px; font-weight:700; color:var(--text); line-height:1; }
+.price-card.featured .price-amount{ color:var(--gold); }
+.price-amount sup{ font-size:22px; vertical-align:top; margin-top:12px; font-family:'Inter',sans-serif; }
+.price-recur{ font-size:12px; color:var(--gray-dim); margin:8px 0 32px; }
+.price-divider{ height:1px; background:var(--border); margin-bottom:28px; }
+.price-list{ list-style:none; margin-bottom:40px; }
+.price-list li{ font-family:'Inter',sans-serif; text-transform:none; font-size:13px; color:var(--gray); padding:7px 0; border-bottom:1px solid var(--border); display:flex; gap:10px; align-items:center; font-weight:300; }
+.price-list li::before{ content:'—'; color:var(--gold); font-size:10px; flex-shrink:0; }
+.price-btn{ display:block; text-align:center; padding:14px; font-family:'Oswald',sans-serif; font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; text-decoration:none; transition:all .25s; border:1px solid var(--border); color:var(--text); }
+.price-btn:hover{ border-color:var(--gold); color:var(--gold); }
+.price-card.featured .price-btn{ border-color:var(--gold); background:var(--gold); color:#171510; }
+.price-card.featured .price-btn:hover{ background:transparent; }
 
-/* PRICING */
-.pricing-section { padding: 100px 56px; background: var(--warm); }
-.pricing-grid {
-  display: grid; grid-template-columns: repeat(3,1fr);
-  gap: 1px; background: var(--light); border: 1px solid var(--light);
-  max-width: 960px; margin: 0 auto;
-}
-.price-card { background: var(--stone); padding: 48px 36px; position: relative; }
-.price-card.featured { background: var(--black); }
-.price-badge {
-  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-  background: var(--gold); color: var(--black);
-  padding: 4px 16px; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500;
-}
-.price-plan { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); margin-bottom: 24px; }
-.price-card.featured .price-plan { color: rgba(255,255,255,0.4); }
-.price-amount {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 64px; font-weight: 400; color: var(--black); line-height: 1;
-}
-.price-card.featured .price-amount { color: var(--stone); }
-.price-amount sup { font-size: 24px; vertical-align: top; margin-top: 12px; font-family: 'Karla', sans-serif; }
-.price-recur { font-size: 12px; color: var(--gray); margin: 8px 0 32px; }
-.price-card.featured .price-recur { color: rgba(255,255,255,0.4); }
-.price-divider { height: 1px; background: var(--light); margin-bottom: 28px; }
-.price-card.featured .price-divider { background: rgba(255,255,255,0.1); }
-.price-list { list-style: none; margin-bottom: 40px; }
-.price-list li {
-  font-size: 13px; color: var(--gray); padding: 7px 0;
-  border-bottom: 1px solid var(--light);
-  display: flex; gap: 10px; align-items: center; font-weight: 300;
-}
-.price-card.featured .price-list li { color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.08); }
-.price-list li::before { content: '—'; color: var(--gold); font-size: 10px; flex-shrink: 0; }
-.price-btn {
-  display: block; text-align: center; padding: 14px;
-  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
-  text-decoration: none; transition: all 0.25s;
-  border: 1px solid var(--black); color: var(--black);
-}
-.price-btn:hover { background: var(--black); color: var(--stone); }
-.price-card.featured .price-btn { border-color: var(--stone); color: var(--stone); }
-.price-card.featured .price-btn:hover { background: var(--stone); color: var(--black); }
+.cta-section{ padding:120px 56px; background:var(--panel); border-top:1px solid var(--border); display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.cta-left p{ font-family:'Inter',sans-serif; text-transform:none; font-size:14px; color:var(--gray); line-height:1.7; font-weight:300; }
+.cta-right{ display:flex; flex-direction:column; gap:16px; }
+.cta-email-btn{ display:flex; align-items:center; justify-content:space-between; padding:22px 28px; background:var(--gold); color:#171510; text-decoration:none; border:1px solid var(--gold); transition:all .25s; }
+.cta-email-btn:hover{ background:transparent; color:var(--gold); }
+.cta-lbl{ font-size:10px; letter-spacing:2px; text-transform:uppercase; opacity:.7; display:block; margin-bottom:4px; }
+.cta-val{ font-family:'Oswald',sans-serif; font-size:17px; font-weight:600; text-transform:none; letter-spacing:.3px; }
+.cta-arrow{ font-size:20px; transition:transform .25s; }
+.cta-email-btn:hover .cta-arrow, .cta-demo-btn:hover .cta-arrow{ transform:translateX(4px); }
+.cta-demo-btn{ display:flex; align-items:center; justify-content:space-between; padding:22px 28px; background:transparent; color:var(--text); text-decoration:none; border:1px solid var(--border); transition:all .25s; }
+.cta-demo-btn:hover{ border-color:var(--gold); }
+.cta-note{ font-size:11px; color:var(--gray-dim); letter-spacing:.5px; padding-top:8px; border-top:1px solid var(--border); }
 
-/* CTA */
-.cta-section {
-  padding: 120px 56px; background: var(--stone);
-  border-top: 1px solid var(--light);
-  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-}
-.cta-left .sec-title { margin-bottom: 8px; }
-.cta-left p { font-size: 14px; color: var(--gray); line-height: 1.7; font-weight: 300; }
-.cta-right { display: flex; flex-direction: column; gap: 16px; }
-.cta-email-btn {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 22px 28px; background: var(--black); color: var(--stone);
-  text-decoration: none; border: 1px solid var(--black); transition: all 0.25s;
-}
-.cta-email-btn:hover { background: transparent; color: var(--black); }
-.cta-lbl { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.5; display: block; margin-bottom: 4px; }
-.cta-val { font-family: 'Cormorant Garamond', serif; font-size: 18px; }
-.cta-arrow { font-size: 20px; }
-.cta-demo-btn {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 22px 28px; background: transparent; color: var(--black);
-  text-decoration: none; border: 1px solid var(--light); transition: all 0.25s;
-}
-.cta-demo-btn:hover { border-color: var(--black); }
-.cta-note { font-size: 11px; color: var(--gray); letter-spacing: 0.5px; padding-top: 8px; border-top: 1px solid var(--light); }
+footer{ background:#070707; padding:32px 56px; display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border); }
+.footer-logo{ font-family:'Oswald',sans-serif; font-size:15px; letter-spacing:3px; text-transform:uppercase; color:var(--text); }
+.footer-logo span{ color:var(--gold); }
+footer p{ font-family:'Inter',sans-serif; font-size:11px; color:var(--gray-dim); letter-spacing:.5px; }
+footer a{ color:var(--gray-dim); text-decoration:none; transition:color .2s; }
+footer a:hover{ color:var(--gold); }
 
-/* FOOTER */
-footer {
-  background: var(--black); padding: 32px 56px;
-  display: flex; justify-content: space-between; align-items: center;
-}
-.footer-logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 16px; letter-spacing: 4px; text-transform: uppercase; color: var(--stone);
-}
-footer p { font-size: 11px; color: rgba(255,255,255,0.25); letter-spacing: 0.5px; }
-footer a { color: rgba(255,255,255,0.25); text-decoration: none; transition: color 0.2s; }
-footer a:hover { color: var(--gold); }
+.fade{ opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease; }
+.fade.in{ opacity:1; transform:translateY(0); }
+@media (prefers-reduced-motion:reduce){ .fade{opacity:1; transform:none; transition:none;} .marquee{animation:none;} .phone-tag,.phone-tag2{animation:none;} }
 
-/* ANIMATIONS */
-.fade { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
-.fade.in { opacity: 1; transform: translateY(0); }
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  nav { padding: 16px 24px; }
-  .nav-links { display: none; }
-  .hero { grid-template-columns: 1fr; min-height: auto; }
-  .hero-left { padding: 100px 24px 200px; border-right: none; border-bottom: 1px solid var(--light); }
-  .hero-right { display: none; }
-  .hero-stats { bottom: 40px; left: 24px; }
-  .section, .features-section, .pricing-section { padding: 64px 24px; }
-  .problems-grid, .features-grid, .pricing-grid { grid-template-columns: 1fr; }
-  .langs-section { padding: 56px 24px; }
-  .lang-item { padding: 12px 20px; }
-  .cta-section { grid-template-columns: 1fr; padding: 64px 24px; gap: 40px; }
-  footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 24px; }
+@media (max-width:900px){
+  nav{ padding:16px 24px; } .nav-links{ display:none; }
+  .hero{ grid-template-columns:1fr; min-height:auto; }
+  .hero-left{ padding:100px 24px 56px; border-right:none; }
+  .hero-right{ padding:48px 24px 64px; }
+  .hero-right::before{ inset:18px; }
+  .hero-right-tag{ display:none; }
+  .phone-frame{ width:204px; } .phone-screen-wrap{ height:380px; }
+  .section,.features-section,.pricing-section{ padding:64px 24px; }
+  .problems-grid,.features-grid,.pricing-grid,.cards2{ grid-template-columns:1fr; }
+  .base-plan-row{ grid-template-columns:1fr; }
+  .base-plan-info{ padding:36px 24px 28px; }
+  .base-plan-price{ padding:32px 24px 36px; align-items:stretch; }
+  .base-plan-label{ left:24px; }
+  .addons-grid{ grid-template-columns:1fr; }
+  .langs-section{ padding:56px 24px; } .lang-item{ padding:12px 20px; }
+  .compare-table th, .compare-table td{ padding:14px 16px; font-size:12px; }
+  .cta-section{ grid-template-columns:1fr; padding:64px 24px; gap:40px; }
+  footer{ flex-direction:column; gap:12px; text-align:center; padding:28px 24px; }
 }
 </style>
 </head>
 <body>
-
 <nav>
-  <div class="nav-logo">Menú QR</div>
+  <div class="nav-logo">Menú <span>QR</span></div>
   <div class="nav-links">
-    <a href="#problema">El problema</a>
-    <a href="#funciones">Funciones</a>
-    <a href="#sitio">Sitio web</a>
-    <a href="#precios">Precios</a>
-    <a href="#contacto">Contacto</a>
+    <a href="#problema">El problema</a><a href="#funciones">Funciones</a><a href="#comparacion">Comparación</a><a href="#precios">Precios</a><a href="#contacto">Contacto</a>
   </div>
   <a href="#contacto" class="nav-cta">Probá 10 días gratis</a>
 </nav>
@@ -446,11 +264,11 @@ footer a:hover { color: var(--gold); }
 <section class="hero">
   <div class="hero-left">
     <div class="hero-eyebrow">Buenos Aires · Argentina · 2026</div>
-    <h1 class="hero-h1">Tu menú.<br><em>6 idiomas.</em><br>Un QR.</h1>
+    <h1 class="hero-h1">Tu menú.<br><span class="accent">6 idiomas.</span><br>Un QR.</h1>
     <p class="hero-sub">Para restaurantes que quieren captar turistas sin complicaciones. Sin apps. Sin reimprimir.</p>
     <div class="hero-actions">
-      <a href="mailto:menuqr.baires@gmail.com?subject=Quiero%20el%20men%C3%BA%20digital%20QR&body=Hola%2C%20me%20interesa%20probar%20el%20men%C3%BA%20digital%20QR%20para%20mi%20negocio." class="btn-black">Probá gratis 10 días</a>
-      <a href="https://menu-new-seven.vercel.app/" target="_blank" class="btn-ghost">Ver demo en vivo →</a>
+      <a href="mailto:menuqr.baires@gmail.com?subject=Quiero%20el%20men%C3%BA%20digital%20QR" class="btn-gold">Probá gratis 10 días</a>
+      <a href="https://menu-new-seven.vercel.app/" target="_blank" class="btn-line">Ver demo en vivo →</a>
     </div>
     <div class="hero-stats">
       <div><div class="hstat-num">6</div><div class="hstat-lab">Idiomas</div></div>
@@ -458,266 +276,144 @@ footer a:hover { color: var(--gold); }
     </div>
   </div>
   <div class="hero-right">
+    <div class="hero-right-tag">Demo en vivo</div>
     <div style="position:relative;">
-      <div class="phone-tag">Demo en vivo</div>
+      <div class="phone-tag">Probalo</div>
       <div class="phone-frame">
-        <div class="phone-top-bar">
-          <div class="phone-notch"></div>
-        </div>
+        <div class="phone-top-bar"><div class="phone-notch"></div></div>
         <div class="phone-screen-wrap">
-
-          <!-- LANG BADGE -->
           <div class="ms-lang-badge">🇦🇷 Español</div>
-
-          <!-- HERO IMAGE AREA -->
-          <div class="ms-hero">
-            <div class="ms-hero-overlay"></div>
-            <div class="ms-hero-content">
-              <div class="ms-location">BUENOS AIRES</div>
-              <div class="ms-title">Why Not</div>
-              <div class="ms-subtitle">CAFÉ · BAR · RESTAURANTE</div>
-            </div>
+          <div class="ms-hero"><div class="ms-hero-overlay"></div>
+            <div class="ms-hero-content"><div class="ms-location">BUENOS AIRES</div><div class="ms-title">Why Not</div><div class="ms-subtitle">CAFÉ · BAR · RESTAURANTE</div></div>
           </div>
-
-          <!-- CATEGORIES -->
-          <div class="ms-cats">
-            <div class="ms-cat active">TODO</div>
-            <div class="ms-cat">CAFETERÍA</div>
-            <div class="ms-cat">DESAYUNOS</div>
-            <div class="ms-cat">ENSALADAS</div>
-          </div>
-
-          <!-- MENU ITEMS -->
+          <div class="ms-cats"><div class="ms-cat active">TODO</div><div class="ms-cat">CAFETERÍA</div><div class="ms-cat">DESAYUNOS</div><div class="ms-cat">ENSALADAS</div></div>
           <div class="ms-body">
             <div class="ms-section-title">Cafetería <span>CAFETERÍA</span></div>
-
-            <div class="ms-item">
-              <div class="ms-item-info">
-                <div class="ms-item-name">Café americano</div>
-                <div class="ms-item-desc">Café suave, largo</div>
-              </div>
-              <div class="ms-item-right">
-                <div class="ms-item-price">$4.000</div>
-                <div class="ms-item-btn">+</div>
-              </div>
-            </div>
-
-            <div class="ms-item">
-              <div class="ms-item-info">
-                <div class="ms-item-name">Cappuccino Frozen</div>
-                <div class="ms-item-desc">Espresso, helado de crema, chocolate y canela</div>
-              </div>
-              <div class="ms-item-right">
-                <div class="ms-item-price">$7.500</div>
-                <div class="ms-item-btn">+</div>
-              </div>
-            </div>
-
+            <div class="ms-item"><div class="ms-item-info"><div class="ms-item-name">Café americano</div><div class="ms-item-desc">Café suave, largo</div></div><div class="ms-item-right"><div class="ms-item-price">$4.000</div><div class="ms-item-btn">+</div></div></div>
+            <div class="ms-item"><div class="ms-item-info"><div class="ms-item-name">Cappuccino Frozen</div><div class="ms-item-desc">Espresso, helado de crema, chocolate y canela</div></div><div class="ms-item-right"><div class="ms-item-price">$7.500</div><div class="ms-item-btn">+</div></div></div>
             <div class="ms-section-title" style="margin-top:16px;">Desayunos <span>DESAYUNOS</span></div>
-
-            <div class="ms-item">
-              <div class="ms-item-info">
-                <div class="ms-item-tag">ESPECIAL</div>
-                <div class="ms-item-name">Combo 1</div>
-                <div class="ms-item-desc">Café americano + 2 medialunas ó 2 Donayakis ó budín del día</div>
-              </div>
-              <div class="ms-item-right">
-                <div class="ms-item-price">$8.000</div>
-                <div class="ms-item-btn">+</div>
-              </div>
-            </div>
-
-            <div class="ms-item">
-              <div class="ms-item-info">
-                <div class="ms-item-tag">ESPECIAL</div>
-                <div class="ms-item-name">Combo 6</div>
-                <div class="ms-item-desc">Café con leche + Tostado de jamón y queso en pan árabe integral</div>
-              </div>
-              <div class="ms-item-right">
-                <div class="ms-item-price">$16.000</div>
-                <div class="ms-item-btn">+</div>
-              </div>
-            </div>
+            <div class="ms-item"><div class="ms-item-info"><div class="ms-item-tag">ESPECIAL</div><div class="ms-item-name">Combo 1</div><div class="ms-item-desc">Café americano + 2 medialunas ó 2 Donayakis ó budín del día</div></div><div class="ms-item-right"><div class="ms-item-price">$8.000</div><div class="ms-item-btn">+</div></div></div>
+            <div class="ms-item"><div class="ms-item-info"><div class="ms-item-tag">ESPECIAL</div><div class="ms-item-name">Combo 6</div><div class="ms-item-desc">Café con leche + Tostado de jamón y queso en pan árabe integral</div></div><div class="ms-item-right"><div class="ms-item-price">$16.000</div><div class="ms-item-btn">+</div></div></div>
           </div>
-
         </div>
-        <div class="phone-bottom-bar">
-          <div class="phone-home-btn"></div>
-        </div>
+        <div class="phone-bottom-bar"><div class="phone-home-btn"></div></div>
       </div>
       <div class="phone-tag2">¡Tocalo! ↑</div>
     </div>
   </div>
 </section>
 
-<div class="marquee-wrap">
-  <div class="marquee">
-    <div class="marquee-item acc">Español</div><div class="marquee-item">English</div>
-    <div class="marquee-item acc">Português</div><div class="marquee-item">Français</div>
-    <div class="marquee-item acc">Deutsch</div><div class="marquee-item">Italiano</div>
-    <div class="marquee-item">· Menú Digital QR ·</div>
-    <div class="marquee-item acc">Español</div><div class="marquee-item">English</div>
-    <div class="marquee-item acc">Português</div><div class="marquee-item">Français</div>
-    <div class="marquee-item acc">Deutsch</div><div class="marquee-item">Italiano</div>
-    <div class="marquee-item">· Menú Digital QR ·</div>
-  </div>
-</div>
+<div class="marquee-wrap"><div class="marquee">
+  <div class="marquee-item acc">Español</div><div class="marquee-item">English</div><div class="marquee-item acc">Português</div><div class="marquee-item">Français</div><div class="marquee-item acc">Deutsch</div><div class="marquee-item">Italiano</div><div class="marquee-item">· Menú Digital QR ·</div>
+  <div class="marquee-item acc">Español</div><div class="marquee-item">English</div><div class="marquee-item acc">Português</div><div class="marquee-item">Français</div><div class="marquee-item acc">Deutsch</div><div class="marquee-item">Italiano</div><div class="marquee-item">· Menú Digital QR ·</div>
+</div></div>
 
 <section class="section" id="problema">
   <div class="sec-label">El problema</div>
-  <h2 class="sec-title">¿Por qué perdés<br>clientes turistas?</h2>
+  <h2 class="sec-title">¿Por qué perdés clientes turistas?</h2>
   <p class="sec-sub">Buenos Aires recibe millones de turistas al año. La mayoría no habla español. Sin menú en su idioma, piden al azar o directamente se van.</p>
   <div class="problems-grid">
-    <div class="prob-card fade">
-      <div class="prob-num">01</div>
-      <div class="prob-title">El menú en papel y el PDF con QR son lo mismo</div>
-      <p class="prob-text">Da igual si el menú está impreso o en un PDF con QR: el resultado es el mismo. Solo en español, sin actualizaciones, sin carrito. El turista no entiende nada y se va.</p>
-    </div>
-    <div class="prob-card fade">
-      <div class="prob-num">02</div>
-      <div class="prob-title">La barrera del idioma = ventas perdidas</div>
-      <p class="prob-text">Cuando el cliente no entiende el menú, pide menos, elige al azar o se va al local de al lado que sí tiene menú en su idioma.</p>
-    </div>
-    <div class="prob-card fade">
-      <div class="prob-num">03</div>
-      <div class="prob-title">Un sitio web de agencia no es la solución</div>
-      <p class="prob-text">Cuesta entre USD 500 y USD 2.000. Tarda semanas. Y encima no tiene menú interactivo ni QR para las mesas. Demasiado para un café de barrio.</p>
-    </div>
+    <div class="prob-card fade"><div class="prob-num">01</div><div class="prob-title">El menú en papel y el PDF con QR son lo mismo</div><p class="prob-text">Da igual si el menú está impreso o en un PDF con QR: el resultado es el mismo. Solo en español, sin actualizaciones, sin carrito. El turista no entiende nada y se va.</p></div>
+    <div class="prob-card fade"><div class="prob-num">02</div><div class="prob-title">La barrera del idioma = ventas perdidas</div><p class="prob-text">Cuando el cliente no entiende el menú, pide menos, elige al azar o se va al local de al lado que sí tiene menú en su idioma.</p></div>
+    <div class="prob-card fade"><div class="prob-num">03</div><div class="prob-title">Un sitio web de agencia no es la solución</div><p class="prob-text">Cuesta entre USD 500 y USD 2.000. Tarda semanas. Y encima no tiene menú interactivo ni QR para las mesas. Demasiado para un café de barrio.</p></div>
   </div>
 </section>
 
 <section class="features-section" id="funciones">
-  <div class="sec-label" style="color:rgba(200,169,126,0.7);">La solución</div>
-  <h2 class="sec-title" style="color:var(--stone);">Todo lo que necesita<br>tu negocio</h2>
-  <p class="sec-sub">Un menú digital moderno, un sitio web completo y un QR para cada mesa. Todo en uno.</p>
+  <div class="sec-label">La solución</div>
+  <h2 class="sec-title">Todo lo que necesita tu negocio</h2>
+  <p class="sec-sub">La base resuelve la barrera del idioma. Los adicionales suman presencia online cuando tu negocio lo necesite.</p>
   <div class="features-grid">
-    <div class="feat fade">
-      <div class="feat-num">01</div>
-      <div class="feat-title">Menú en 6 idiomas automático</div>
-      <p class="feat-text">Español, inglés, portugués, francés, alemán e italiano. El cliente elige su idioma con un toque. Sin apps, sin descargas.</p>
-      <div class="feat-tag">Multilenguaje</div>
-    </div>
-    <div class="feat fade">
-      <div class="feat-num">02</div>
-      <div class="feat-title">Carrito de pedido para el mozo</div>
-      <p class="feat-text">El cliente arma su pedido, le muestra la pantalla al mozo y listo. Sin malentendidos, sin errores, sin frustraciones.</p>
-      <div class="feat-tag">Sin errores</div>
-    </div>
-    <div class="feat fade">
-      <div class="feat-num">03</div>
-      <div class="feat-title">Sitio web completo del local</div>
-      <p class="feat-text">Fotos, dirección con mapa, horarios, WhatsApp y redes sociales. Todo en una sola página profesional.</p>
-      <div class="feat-tag">Presencia online</div>
-    </div>
-    <div class="feat fade">
-      <div class="feat-num">04</div>
-      <div class="feat-title">Precios actualizados en tiempo real</div>
-      <p class="feat-text">¿Cambió el precio de un plato? Se actualiza en segundos para todos los clientes. El QR sigue siendo el mismo, siempre.</p>
-      <div class="feat-tag">Tiempo real</div>
-    </div>
+    <div class="feat fade"><div class="feat-num">01</div><div class="feat-title">Menú en 6 idiomas automático</div><p class="feat-text">Español, inglés, portugués, francés, alemán e italiano. El cliente elige su idioma con un toque. Sin apps, sin descargas.</p><div class="feat-tag">Multilenguaje</div></div>
+    <div class="feat fade"><div class="feat-num">02</div><div class="feat-title">Carrito de pedido para el mozo</div><p class="feat-text">El cliente arma su pedido, le muestra la pantalla al mozo y listo. Sin malentendidos, sin errores, sin frustraciones.</p><div class="feat-tag">Sin errores</div></div>
+    <div class="feat fade"><div class="feat-num">03</div><div class="feat-title">Sitio web completo del local</div><p class="feat-text">Fotos, dirección con mapa, horarios, WhatsApp y redes sociales. Todo en una sola página profesional.</p><div class="feat-tag feat-tag-addon">Adicional</div></div>
+    <div class="feat fade"><div class="feat-num">04</div><div class="feat-title">Precios actualizados en tiempo real</div><p class="feat-text">¿Cambió el precio de un plato? Se actualiza en segundos para todos los clientes. El QR sigue siendo el mismo, siempre.</p><div class="feat-tag">Tiempo real</div></div>
   </div>
 </section>
 
 <section class="langs-section fade">
-  <div class="langs-title">Tu menú habla el idioma de tus clientes</div>
+  <div class="langs-title">Tu menú habla el <span class="accent">idioma</span> de tus clientes</div>
   <div class="langs-row">
-    <div class="lang-item"><span>🇦🇷</span>Español</div>
-    <div class="lang-item"><span>🇺🇸</span>English</div>
-    <div class="lang-item"><span>🇧🇷</span>Português</div>
-    <div class="lang-item"><span>🇫🇷</span>Français</div>
-    <div class="lang-item"><span>🇩🇪</span>Deutsch</div>
-    <div class="lang-item"><span>🇮🇹</span>Italiano</div>
+    <div class="lang-item"><span class="lang-code">AR</span>Español</div><div class="lang-item"><span class="lang-code">US</span>English</div><div class="lang-item"><span class="lang-code">BR</span>Português</div><div class="lang-item"><span class="lang-code">FR</span>Français</div><div class="lang-item"><span class="lang-code">DE</span>Deutsch</div><div class="lang-item"><span class="lang-code">IT</span>Italiano</div>
   </div>
 </section>
 
-<section class="section" id="sitio" style="background:var(--warm); border-top:1px solid var(--light);">
-  <div class="sec-label">Servicio adicional</div>
-  <h2 class="sec-title">Sitio web del local —<br><em style="font-style:italic; color:var(--gold);">un producto aparte</em></h2>
-  <p class="sec-sub">Tu local está en Instagram, pero los turistas te buscan en Google. Sin sitio web, simplemente no aparecés.</p>
-
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--light); border:1px solid var(--light); margin-bottom:56px;">
-
-    <div style="background:var(--stone); padding:40px 36px;">
-      <div style="font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:20px;">Qué incluye</div>
-      <div style="display:flex; flex-direction:column; gap:14px;">
-        <div style="display:flex; gap:14px; align-items:flex-start;">
-          <span style="color:var(--gold); font-size:12px; margin-top:2px; flex-shrink:0;">—</span>
-          <div>
-            <div style="font-size:14px; font-weight:500; color:var(--black); margin-bottom:3px;">Fotos del local</div>
-            <div style="font-size:12px; color:var(--gray); font-weight:300;">Interior, ambiente y fachada — todo lo que atrae a los clientes</div>
-          </div>
-        </div>
-        <div style="display:flex; gap:14px; align-items:flex-start;">
-          <span style="color:var(--gold); font-size:12px; margin-top:2px; flex-shrink:0;">—</span>
-          <div>
-            <div style="font-size:14px; font-weight:500; color:var(--black); margin-bottom:3px;">Galería de platos</div>
-            <div style="font-size:12px; color:var(--gray); font-weight:300;">Fotos de tus platos que venden mejor que cualquier descripción</div>
-          </div>
-        </div>
-        <div style="display:flex; gap:14px; align-items:flex-start;">
-          <span style="color:var(--gold); font-size:12px; margin-top:2px; flex-shrink:0;">—</span>
-          <div>
-            <div style="font-size:14px; font-weight:500; color:var(--black); margin-bottom:3px;">Historia del local</div>
-            <div style="font-size:12px; color:var(--gray); font-weight:300;">Tu historia, tus valores y lo que te hace único</div>
-          </div>
-        </div>
-        <div style="display:flex; gap:14px; align-items:flex-start;">
-          <span style="color:var(--gold); font-size:12px; margin-top:2px; flex-shrink:0;">—</span>
-          <div>
-            <div style="font-size:14px; font-weight:500; color:var(--black); margin-bottom:3px;">Dirección con mapa de Google</div>
-            <div style="font-size:12px; color:var(--gray); font-weight:300;">El turista te encuentra a la primera</div>
-          </div>
-        </div>
-        <div style="display:flex; gap:14px; align-items:flex-start;">
-          <span style="color:var(--gold); font-size:12px; margin-top:2px; flex-shrink:0;">—</span>
-          <div>
-            <div style="font-size:14px; font-weight:500; color:var(--black); margin-bottom:3px;">Horarios y contacto</div>
-            <div style="font-size:12px; color:var(--gray); font-weight:300;">WhatsApp, Instagram, teléfono — todo en un solo lugar</div>
-          </div>
-        </div>
-        <div style="display:flex; gap:14px; align-items:flex-start;">
-          <span style="color:var(--gold); font-size:12px; margin-top:2px; flex-shrink:0;">—</span>
-          <div>
-            <div style="font-size:14px; font-weight:500; color:var(--black); margin-bottom:3px;">Reseñas de clientes</div>
-            <div style="font-size:12px; color:var(--gray); font-weight:300;">Tus mejores reseñas de Google y TripAdvisor en tu sitio</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div style="background:var(--black); padding:40px 36px; display:flex; flex-direction:column; justify-content:space-between;">
-      <div>
-        <div style="font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:20px;">Por qué lo necesitás</div>
-        <div style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--stone); line-height:1.3; margin-bottom:24px;">
-          "Si no estás en internet, no existís para el turista"
-        </div>
-        <p style="font-size:13px; color:rgba(255,255,255,0.45); line-height:1.7; font-weight:300; margin-bottom:24px;">
-          Un turista llega a Palermo, abre Google y busca "café near me". Tu competencia con sitio web aparece primero. Vos, no.
-        </p>
-        <p style="font-size:13px; color:rgba(255,255,255,0.45); line-height:1.7; font-weight:300;">
-          Tu sitio trabaja las 24 horas y trae clientes nuevos mientras dormís. Una agencia cobra entre USD 500 y USD 2.000 por esto. Nosotros, mucho menos.
-        </p>
-      </div>
-      <div style="margin-top:40px; padding-top:32px; border-top:1px solid rgba(255,255,255,0.1);">
-        <div style="font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:8px;">Precio</div>
-        <div style="font-family:'Cormorant Garamond',serif; font-size:52px; color:var(--stone); line-height:1;">
-          <sup style="font-size:20px; vertical-align:top; margin-top:10px; font-family:'Karla',sans-serif;">$</sup>150
-        </div>
-        <div style="font-size:12px; color:rgba(255,255,255,0.4); margin:6px 0 24px;">+ $20 / mes por hosting y soporte</div>
-        <a href="mailto:menuqr.baires@gmail.com?subject=Quiero%20el%20sitio%20web%20del%20local" style="display:block; text-align:center; padding:14px; font-size:10px; letter-spacing:2px; text-transform:uppercase; text-decoration:none; border:1px solid var(--stone); color:var(--stone); transition:all 0.25s;">
-          Consultar →
-        </a>
-      </div>
-    </div>
-
+<section class="section section-alt" id="comparacion">
+  <div class="sec-label">Comparación</div>
+  <h2 class="sec-title">¿Por qué <span class="accent">Menú QR</span> y no otra cosa?</h2>
+  <p class="sec-sub">No es solo un menú más lindo. Es la diferencia entre captar turistas o perderlos por una barrera de idioma.</p>
+  <div class="compare-wrap">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th class="ch-empty"></th>
+          <th>Menú en papel / PDF</th>
+          <th>Sitio de agencia</th>
+          <th class="ch-highlight">Menú QR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="rlabel">Costo inicial</td>
+          <td>Gratis (pero te cuesta clientes)</td>
+          <td>USD 500 – 2.000</td>
+          <td class="hl">Desde USD 100</td>
+        </tr>
+        <tr>
+          <td class="rlabel">Tiempo de implementación</td>
+          <td>—</td>
+          <td>2 – 6 semanas</td>
+          <td class="hl">24 – 48 horas</td>
+        </tr>
+        <tr>
+          <td class="rlabel">Idiomas disponibles</td>
+          <td>1</td>
+          <td>1</td>
+          <td class="hl">6</td>
+        </tr>
+        <tr>
+          <td class="rlabel">Actualizar precios</td>
+          <td>Reimprimir todo</td>
+          <td>Pedirle a la agencia</td>
+          <td class="hl">Al instante, vos mismo</td>
+        </tr>
+        <tr>
+          <td class="rlabel">Pedido sin errores</td>
+          <td>No</td>
+          <td>No aplica</td>
+          <td class="hl">Sí, con carrito</td>
+        </tr>
+        <tr>
+          <td class="rlabel">Presencia en Google Maps</td>
+          <td>No</td>
+          <td>Depende del plan</td>
+          <td class="hl">Disponible como adicional</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</section>
 
-  <div style="background:var(--stone); border:1px solid var(--light); padding:24px 32px; display:flex; align-items:center; justify-content:space-between; gap:24px;">
-    <div>
-      <div style="font-size:13px; font-weight:500; color:var(--black); margin-bottom:4px;">Combo: Menú QR + Sitio web del local</div>
-      <div style="font-size:12px; color:var(--gray); font-weight:300;">Contratá los dos juntos y te hacemos un descuento de USD 30 en el inicio</div>
+<section class="section section-alt" id="presencia">
+  <div class="sec-label">Adicionales</div>
+  <h2 class="sec-title">Tu local también <span class="accent">en internet</span></h2>
+  <p class="sec-sub">Tu local está en Instagram, pero los turistas te buscan en Google. Sin presencia online, simplemente no aparecés.</p>
+  <div class="cards2">
+    <div class="card-left">
+      <div class="lbl">Lo que podés sumar a tu plan base</div>
+      <div class="feat-li"><span class="dash">—</span><div><div class="t">Punto en Google Maps</div><div class="d">Con tus mejores reseñas de Google y TripAdvisor visibles</div></div></div>
+      <div class="feat-li"><span class="dash">—</span><div><div class="t">Sitio web liviano del local</div><div class="d">Fotos del local y los platos, dirección, horarios y contacto</div></div></div>
+      <div class="feat-li"><span class="dash">—</span><div><div class="t">Ubicación con mapa</div><div class="d">El turista te encuentra a la primera, sin preguntar</div></div></div>
+      <div class="feat-li"><span class="dash">—</span><div><div class="t">Pedido directo a la cocina</div><div class="d">Llega por WhatsApp con el número de mesa, sin pasar por el mozo</div></div></div>
     </div>
-    <a href="mailto:menuqr.baires@gmail.com?subject=Combo%20men%C3%BA%20+%20sitio%20web" style="background:var(--black); color:var(--stone); padding:12px 24px; font-size:10px; letter-spacing:2px; text-transform:uppercase; text-decoration:none; white-space:nowrap; flex-shrink:0;">Escribinos →</a>
+    <div class="card-right">
+      <div>
+        <div class="lbl">Por qué lo necesitás</div>
+        <div class="quote">"Si no estás en internet, no existís para el turista"</div>
+        <p>Un turista llega a Palermo, abre Google y busca "café near me". Tu competencia con sitio web aparece primero. Vos, no.</p>
+        <p>Sumando estos adicionales te ponés en el mapa y automatizás la cocina, sin pagar lo que cobra una agencia por separado. Cada uno se agrega cuando lo necesités, a tu ritmo.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -725,53 +421,57 @@ footer a:hover { color: var(--gold); }
   <div style="text-align:center; margin-bottom:56px;">
     <div class="sec-label" style="justify-content:center;">Planes y precios</div>
     <h2 class="sec-title" style="text-align:center;">Sin letra chica</h2>
-    <p class="sec-sub" style="margin:0 auto; text-align:center;">Elegí el plan que mejor se adapta a tu negocio. Cancelás cuando querés.</p>
+    <p class="sec-sub" style="margin:0 auto; text-align:center;">Empezás con la base que resuelve la barrera del idioma. Sumás lo que tu negocio necesite, cuando lo necesite.</p>
   </div>
-  <div class="pricing-grid">
-    <div class="price-card fade">
-      <div class="price-plan">Inicio</div>
-      <div class="price-amount"><sup>$</sup>80</div>
-      <div class="price-recur">+ $15 / mes</div>
-      <div class="price-divider"></div>
-      <ul class="price-list">
-        <li>Menú digital con QR</li>
-        <li>3 idiomas</li>
-        <li>Hasta 30 platos</li>
-        <li>Carrito de pedido para el mozo</li>
-        <li>Diseño base</li>
-        <li>Soporte por WhatsApp</li>
-      </ul>
-      <a href="mailto:menuqr.baires@gmail.com?subject=Plan%20Inicio" class="price-btn">Empezar →</a>
+
+  <div class="base-plan fade">
+    <div class="base-plan-label">Plan base</div>
+    <div class="base-plan-row">
+      <div class="base-plan-info">
+        <div class="base-plan-title">Menú QR — Base</div>
+        <p class="base-plan-desc">Todo lo que necesitás para que el turista entienda tu menú y pueda pedir sin hablar español.</p>
+        <ul class="base-plan-list">
+          <li>Menú digital con QR en 6 idiomas</li>
+          <li>Nombre, descripción completa y gramaje de cada plato</li>
+          <li>Carrito de pedido — el cliente arma su pedido y le muestra la pantalla al mozo</li>
+          <li>Precios y platos actualizados en tiempo real</li>
+          <li>Soporte por WhatsApp</li>
+        </ul>
+      </div>
+      <div class="base-plan-price">
+        <div class="bp-amount"><sup>$</sup>100</div>
+        <div class="bp-recur">+ $15 / mes</div>
+        <a href="mailto:menuqr.baires@gmail.com?subject=Plan%20Base%20Men%C3%BA%20QR" class="bp-btn">Empezar →</a>
+      </div>
     </div>
-    <div class="price-card featured fade">
-      <div class="price-badge">El más elegido</div>
-      <div class="price-plan">Profesional</div>
-      <div class="price-amount"><sup>$</sup>150</div>
-      <div class="price-recur">+ $20 / mes</div>
-      <div class="price-divider"></div>
-      <ul class="price-list">
-        <li>Todo lo del plan Inicio</li>
-        <li>6 idiomas completos</li>
-        <li>Platos ilimitados</li>
-        <li>Fotos de cada plato</li>
-        <li>Diseño a medida del local</li>
-      </ul>
-      <a href="mailto:menuqr.baires@gmail.com?subject=Plan%20Profesional" class="price-btn">Empezar →</a>
+  </div>
+
+  <div class="addons-label fade">+ Sumá lo que necesites</div>
+  <div class="addons-grid">
+    <div class="addon-card fade">
+      <div class="addon-title">Fotos de cada plato</div>
+      <p class="addon-desc">Tus platos se venden solos cuando el cliente los ve antes de pedir.</p>
+      <div class="addon-price"><span>+$30</span> · +$5/mes</div>
     </div>
-    <div class="price-card fade">
-      <div class="price-plan">Pro + WhatsApp</div>
-      <div class="price-amount"><sup>$</sup>220</div>
-      <div class="price-recur">+ $30 / mes</div>
-      <div class="price-divider"></div>
-      <ul class="price-list">
-        <li>Todo lo del plan Profesional</li>
-        <li>El pedido llega directo al WhatsApp de la cocina</li>
-        <li>El cliente recibe confirmación</li>
-        <li>Menos errores del mozo</li>
-        <li>Automatización real del negocio</li>
-        <li>Soporte prioritario 24hs</li>
-      </ul>
-      <a href="mailto:menuqr.baires@gmail.com?subject=Plan%20Pro%20WhatsApp" class="price-btn">Empezar →</a>
+    <div class="addon-card fade">
+      <div class="addon-title">Punto en Google Maps</div>
+      <p class="addon-desc">Con tus mejores reseñas de Google y TripAdvisor visibles.</p>
+      <div class="addon-price"><span>+$40</span> · +$5/mes</div>
+    </div>
+    <div class="addon-card fade">
+      <div class="addon-title">Sitio web liviano</div>
+      <p class="addon-desc">Fotos del local, dirección, horarios y contacto en una página.</p>
+      <div class="addon-price"><span>+$80</span> · +$10/mes</div>
+    </div>
+    <div class="addon-card fade">
+      <div class="addon-title">Integración con Instagram</div>
+      <p class="addon-desc">Tu feed conectado a tu presencia online del local.</p>
+      <div class="addon-price"><span>+$20</span></div>
+    </div>
+    <div class="addon-card fade">
+      <div class="addon-title">Pedido directo por WhatsApp</div>
+      <p class="addon-desc">El pedido llega a la cocina con el número de mesa, sin pasar por el mozo.</p>
+      <div class="addon-price"><span>+$60</span> · +$10/mes</div>
     </div>
   </div>
 </section>
@@ -779,49 +479,25 @@ footer a:hover { color: var(--gold); }
 <section class="cta-section" id="contacto">
   <div class="cta-left">
     <div class="sec-label">Contacto</div>
-    <h2 class="sec-title">¿Te interesa<br>para tu local?</h2>
+    <h2 class="sec-title">¿Te interesa para tu local?</h2>
     <p>10 días de prueba gratuita. Sin tarjeta. Sin compromiso. Si no te convence, no pagás nada.</p>
   </div>
   <div class="cta-right">
-    <a href="mailto:menuqr.baires@gmail.com?subject=Quiero%20el%20men%C3%BA%20digital%20QR&body=Hola%2C%20me%20interesa%20probar%20el%20men%C3%BA%20digital%20QR%20para%20mi%20negocio." class="cta-email-btn">
-      <div>
-        <span class="cta-lbl">Escribinos a</span>
-        <span class="cta-val">menuqr.baires@gmail.com</span>
-      </div>
-      <span class="cta-arrow">→</span>
-    </a>
-    <a href="https://menu-new-seven.vercel.app/" target="_blank" class="cta-demo-btn">
-      <div>
-        <span class="cta-lbl">Ver demo en vivo</span>
-        <span class="cta-val" style="font-size:16px;">menu-new-seven.vercel.app</span>
-      </div>
-      <span class="cta-arrow">↗</span>
-    </a>
+    <a href="mailto:menuqr.baires@gmail.com?subject=Quiero%20el%20men%C3%BA%20digital%20QR" class="cta-email-btn"><div><span class="cta-lbl">Escribinos a</span><span class="cta-val">menuqr.baires@gmail.com</span></div><span class="cta-arrow">→</span></a>
+    <a href="https://menu-new-seven.vercel.app/" target="_blank" class="cta-demo-btn"><div><span class="cta-lbl">Ver demo en vivo</span><span class="cta-val" style="font-size:15px;">menu-new-seven.vercel.app</span></div><span class="cta-arrow">↗</span></a>
     <div class="cta-note">Respondemos en menos de 24 horas · Buenos Aires, Argentina</div>
   </div>
 </section>
 
 <footer>
-  <div class="footer-logo">Menú QR</div>
+  <div class="footer-logo">Menú <span>QR</span></div>
   <p>© 2026 · Buenos Aires, Argentina · <a href="mailto:menuqr.baires@gmail.com">menuqr.baires@gmail.com</a></p>
 </footer>
 
 <script>
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('in'), i * 100);
-      obs.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade').forEach(el => obs.observe(el));
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
-  });
-});
+const obs = new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'), i*100); obs.unobserve(e.target);}})},{threshold:.1});
+document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click', e=>{e.preventDefault(); document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});}));
 </script>
 </body>
 </html>
